@@ -3,10 +3,10 @@ pygments: true
 permalink: /posts/:year:month:day:title
 rdiscount:
   extensions: [smart]
-
-name: NRS529 SciComp2014
+name: NRS529 SciComp2014 
 url: http://jwhollister.com/SciComp2014
 description: "NRS 529: Scientific Computing for Coastal Resources Management"
-twitter: jhollist
-github: jhollist
+twitter: 
+github: 
 gravatar_url: 
+baseurl: /SciComp2014
