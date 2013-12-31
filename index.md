@@ -1,6 +1,6 @@
 ---
 layout: layout
-title: "NRS 529: Scientific Computing for Coastal Resource Management"
+title: "NRS 592: Scientific Computing for Coastal Resource Management"
 ---
 <section class="content">
 ## Scientific Computing and Programming For Coastal Resource Management: Fundamental Concepts and Open Access Tools
