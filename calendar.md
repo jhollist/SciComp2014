@@ -2,6 +2,8 @@
 layout: layout
 title: Course Calendar
 ---
+
+<section class="content">
 ## Course Calendar and Presentation Schedule
 
 ### Day 1, Monday, Jan. 27, 2014
@@ -94,3 +96,4 @@ title: Course Calendar
  
  ### Day 16, TBD
  - Class Poster Session
+ </section>
