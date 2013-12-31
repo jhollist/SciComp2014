@@ -4,10 +4,9 @@ permalink: /posts/:year:month:day:title
 rdiscount:
   extensions: [smart]
 name: NRS529 URISciComp
-url: http://jwhollister.com/SciComp2014
+url: http://scicomp2014.edc.uri.edu
 description: "NRS 529: Scientific Computing for Coastal Resources Management"
 twitter: 
 github: 
-gravatar_url: http://www.edc.uri.edu/nrs/classes/nrs592/CI.jpg"
-baseurl: /SciComp2014
+gravatar_url: http://www.edc.uri.edu/nrs/classes/nrs592/CI.jpg
 comments: true
