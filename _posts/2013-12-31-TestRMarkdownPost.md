@@ -1,5 +1,5 @@
 ---
-layout: layout
+layout: post
 title: Another test post from R
 author: Jeff Hollister
 ---
