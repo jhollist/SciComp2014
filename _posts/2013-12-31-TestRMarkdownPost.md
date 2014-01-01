@@ -34,6 +34,6 @@ You can also embed plots, for example:
 plot(cars)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk unnamed-chunk-2](unnamed-chunk-2.png) 
 
 
