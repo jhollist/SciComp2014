@@ -12,5 +12,5 @@ Register for NRS592, section 2, 2 credits. Email pete@edc.uri.edu for a permissi
 ### Course Meeting: 
 Monday 3:00-5:00 PM, Location TBA (check back, it will be posted here)
 ### Course Instructors
-[Peter August](mailto:pete@edc.uri.edu), [Jeff Hollister](mailto:hollister.jeff@epa.gov), and [Adam Smith](mailto:raptorbio@hotmail.com) will coordinate course activities.
+[Peter August](mailto:pete@edc.uri.edu), [Jeff Hollister](mailto:hollister.jeff@epa.gov), and [Adam Smith](mailto:adamsmith@my.uri.edu) will coordinate course activities.
 </section>
