@@ -1,6 +1,6 @@
 markdown: rdiscount
 pygments: true
-permalink: /posts/:year:month:day:title
+permalink: /posts/:year-:month-:day-:title.html
 rdiscount:
   extensions: [smart]
 name: NRS592 URISciComp
