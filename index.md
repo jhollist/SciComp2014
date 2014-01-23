@@ -10,7 +10,7 @@ The purpose of this course is to provide students the opportunity to continue th
 ### Spring Semester Course: 
 Register for NRS592, section 2, 2 credits. Email [Peter August](mailto:pete@edc.uri.edu) for a permission number. 
 ### Course Meeting: 
-Monday 3:00-5:00 PM, Location CBLS 252 (Kingston campus)
+Monday 3:00-5:00 PM, Location CBLS 452 (Kingston campus)
 ### Course Instructors
 [Peter August](mailto:pete@edc.uri.edu), [Jeff Hollister](mailto:hollister.jeff@epa.gov), and [Adam Smith](mailto:adamsmith@my.uri.edu) will coordinate course activities.
 </section>
