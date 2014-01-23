@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>Course Introduction and Blog Posts with R Markdown</title>
+<title>Blogging your homework</title>
 
 <style type="text/css">
 body, td {
@@ -179,21 +179,34 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h1>Course Introduction and Blog Posts with R Markdown</h1>
-
 <p>This course is a follow up to the Software Carpentry R Bootcamp hosted by the US EPA and URI Coastal Institute on Jan 13-15, 2014 at the URI Coastal Institute.  The main idea behind having a separate, semester long course was to provide pariticpants of the bootcamp an opportunity to continue practicing the skills they were introduced to and also delve more deeply into some specific applications of R.  While we intend to have a few classes led by the instructors, our hope is that most of the classes and topics will be chosen, prepared, and presented by the students in the class.  The current list of topics and date of presentation is listed on our <a href="http://scicomp2014.edc.uri.edu/calendar.html">course calendar</a> </p>
 
 <p>As we said, most of the course content is to be provided by the course participants. Instead of using traditional means of turning in and presenting this content, we are going to adopt a &ldquo;practice what we preach&rdquo; approach.  The rest of this post will layout what is expected in this regard.</p>
 
 <h3>Blogging your homework</h3>
 
-<p>The first thing that will be a bit different about this class</p>
+<p>The first thing that will be a bit different about this class is that homework and presentations will be dealt with via the course blog.  All assignements are to be turned in as blog posts.  During the class, the blog post will serve as the basis for the discussion (much like the way material was presented during the bootcamp).  After class, the material will live on in the blog so that you may go back to it and try the reproducible examples included in these posts.  </p>
+
+<p>To help faciliate the building of the blog, please use the following naming convention: <code>YEAR-MO-DY-LastName.Rmd</code></p>
+
+<p>If you are interested, the blogging platform we are using is the same platform that supports much of the Github website.  It is <a href="http://jekyllrb.com/">Jekyll</a>.  <a href="http://pages.github.com/">Github pages</a> are Jekyll aware and automatically parse all appropriately formated pages.</p>
 
 <h3>Using Git and Github to turn in assignments</h3>
 
-<p>The secon thing we are trying with this course </p>
+<p>The second thing we are trying with this course is to reinforce your understanding of Git and Github.  As such, to create your blog posts you will need to do the following:</p>
+
+<ol>
+<li>Fork the <a href="https://github.com/jhollist/SciComp2014">course repository</a> to your own repository on Github.</li>
+<li>In RStudio, create a new project from version control.  The link for this is your newly forked repository on Github</li>
+<li>In this new RStudio project, author your post in R Markdown and save the <code>.Rmd</code> in the <code>postsRMarkdown</code> folder.<br/></li>
+<li>Commit as necessary.  When your post is complete, push it up to your forked repository on Github, and submit a pull request to have the <code>.Rmd</code> merged into the repository.  Adam, Pete, or Jeff will take care of getting the <code>.Rmd</code> into the blog.</li>
+</ol>
 
 <h3>Writing up your work with R Markdown</h3>
+
+<p>Lastly, since R Markdown is new to many of you, the following provides some of the basics of R flavored Markdown and YAML (i.e. &ldquo;YAML Aint Markup Language&rdquo;) to help you create your own posts.</p>
+
+<p>Some basics to get your started are below, expect more soon.</p>
 
 <p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the <strong>Help</strong> toolbar button for more details on using R Markdown).</p>
 

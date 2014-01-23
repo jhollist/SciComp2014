@@ -12,14 +12,14 @@ title: Course Calendar
 
 ### Day 2, Monday Feb. 3, 2014
  - **Presenter:** Jeff Hollister
- - **Blog:** Spatial Data analysis with R
+ - **Blog:** Spatial Data Analysis with R
  
 ### Day 3, Monday, Feb 10, 2014
- - **Presenter:**
- - **Blog:** Coming Soon!
+ - **Presenter:** Pete August
+ - **Blog:** R for Wusses Who Need a Result Now: Rcmdr
  
 ### Day 4, Monday, Feb 17, 2014
- - **Presenter:**
+ - **Presenter:** Adam Smith
  - **Blog:** Coming Soon!
 
 ### Day 5, Monday, Feb 24, 2014
