@@ -12,7 +12,8 @@ As we said, most of the course content is to be provided by the course participa
 
 The first thing that will be a bit different about this class is that homework and presentations will be dealt with via the course blog.  All assignements are to be turned in as blog posts.  During the class, the blog post will serve as the basis for the discussion (much like the way material was presented during the bootcamp).  After class, the material will live on in the blog so that you may go back to it and try the reproducible examples included in these posts.  
 
-To help faciliate the building of the blog, please use the following naming convention: `YEAR-MO-DY-LastName.Rmd`
+To help faciliate the building of the blog, please use the following naming convention: 
+`YEAR-MO-DY-LastName.Rmd`
 
 If you are interested, the blogging platform we are using is the same platform that supports much of the Github website.  It is [Jekyll](http://jekyllrb.com/).  [Github pages](http://pages.github.com/) are Jekyll aware and automatically parse all appropriately formated pages.
 
@@ -27,9 +28,62 @@ The second thing we are trying with this course is to reinforce your understandi
 
 ### Writing up your work with R Markdown
 
-Lastly, since R Markdown is new to many of you, the following provides some of the basics of R flavored Markdown and YAML (i.e. "YAML Aint Markup Language") to help you create your own posts.
+Lastly, since R Markdown is new to many of you, the following provides some of the basics of R flavored Markdown and just enough YAML (i.e. "YAML Aint Markup Language") to help you create your own posts.
 
-Some basics to get your started are below, expect more soon.
+#### YAML
+First, let's startm with YAML.  You won't really need to mess with this too much, but it needs to be included.  All you will need to do is include something like the following (this is the YAML for this post)
+
+```
+---
+layout: post
+title: Course Introduction and Blog Posts with R Markdown
+author: Jeff Hollister
+---
+```
+
+So, for you own posts, include this same material (don't forget the `---` before and after).  Only difference will of course be the title and the author.
+
+#### Code Chunks
+Second thing will be including R code in your `.Rmd`.  Simplest version would look like
+
+    ```{r}
+    x<-rnorm(100)
+    x
+    ```
+This identifies what is known as a code chunk.  When written like it is above, it will echo the code to your final document as well as evalute the code with R and echo the results to the final document as well.  There are some cases where you might not want all of this to happen.  You may want just the code returned and not have it evalutated by R.  This is accomplished with:
+
+    ```{r eval=FALSE}
+    x<-rnorm(100)
+    ```
+
+Alternatively you might just want the output returned, as would be the case when using R Markdown to produce a figure in a presenation or paper:
+
+
+    ```{r echo=FALSE}
+    x<-rnorm(100)
+    y<-jitter(x,1000)
+    plot(x,y)
+    ```
+For the blog posts in this class, you very likely use `eval=FALSE` on occassion, but not `echo=FALSE` as it will usually be the code you want to show.
+
+Lastly, each of your code chunks can have a label.  That would be accomplished with something like:
+ 
+    ```{r myFigure echo=FALSE}
+    x<-rnorm(100)
+    y<-jitter(x,1000)
+    plot(x,y)
+    ```
+    
+For this class, please use informative labels for all of your code chunks.  It will be especially useful when we go to create `.md` files for the blog posts.
+
+
+#### Basic Markdown
+
+```{markdown}
+# H1
+## H2
+### H3
+```
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **Help** toolbar button for more details on using R Markdown).
 
