@@ -8,7 +8,7 @@ This course is a follow up to the Software Carpentry R Bootcamp hosted by the US
 
 As we said, most of the course content is to be provided by the course participants. Instead of using traditional means of turning in and presenting this content, we are going to adopt a "practice what we preach" approach.  The rest of this post will layout what is expected in this regard.
 
-### Blogging your homework
+# Blogging your homework
 
 The first thing that will be a bit different about this class is that homework and presentations will be dealt with via the course blog.  All assignements are to be turned in as blog posts.  During the class, the blog post will serve as the basis for the discussion (much like the way material was presented during the bootcamp).  After class, the material will live on in the blog so that you may go back to it and try the reproducible examples included in these posts.  
 
@@ -17,7 +17,7 @@ To help faciliate the building of the blog, please use the following naming conv
 
 If you are interested, the blogging platform we are using is the same platform that supports much of the Github website.  It is [Jekyll](http://jekyllrb.com/).  [Github pages](http://pages.github.com/) are Jekyll aware and automatically parse all appropriately formated pages.
 
-### Using Git and Github to turn in assignments
+# Using Git and Github to turn in assignments
 
 The second thing we are trying with this course is to reinforce your understanding of Git and Github.  As such, to create your blog posts you will need to do the following:
 
@@ -26,12 +26,12 @@ The second thing we are trying with this course is to reinforce your understandi
 3. In this new RStudio project, author your post in R Markdown and save the `.Rmd` in the `postsRMarkdown` folder.  
 4. Commit as necessary.  When your post is complete, push it up to your forked repository on Github, and submit a pull request to have the `.Rmd` merged into the repository.  Adam, Pete, or Jeff will take care of getting the `.Rmd` into the blog.
 
-### Writing up your work with R Markdown
+# Writing up your work with R Markdown
 
 Lastly, since R Markdown is new to many of you, the following provides some of the basics of R flavored Markdown and just enough YAML (i.e. "YAML Aint Markup Language") to help you create your own posts.
 
-#### YAML
-First, let's startm with YAML.  You won't really need to mess with this too much, but it needs to be included.  All you will need to do is include something like the following (this is the YAML for this post)
+## YAML
+First, let's start with YAML.  You won't really need to mess with this too much, but it needs to be included.  All you will need to do is include something like the following (this is the YAML for this post)
 
 ```
 ---
@@ -43,7 +43,7 @@ author: Jeff Hollister
 
 So, for you own posts, include this same material (don't forget the `---` before and after).  Only difference will of course be the title and the author.
 
-#### Code Chunks
+## Code Chunks
 Second thing will be including R code in your `.Rmd`.  Simplest version would look like
 
     ```{r}
@@ -77,45 +77,86 @@ Lastly, each of your code chunks can have a label.  That would be accomplished w
 For this class, please use informative labels for all of your code chunks.  It will be especially useful when we go to create `.md` files for the blog posts.
 
 
-#### Basic Markdown
+## Basic Markdown
 
-```{markdown}
-# H1
-## H2
-### H3
-```
+Markdown is a tool that allows you to write simply formated text that is converted to HTML/XHTML.  Primary goal of markdwon is readibility of the raw markdown.  For the basics of markdown look at [Daring Fireball](http://daringfireball.net/projects/markdown/basics).  To try it out [Dingus](http://daringfireball.net/projects/markdown/dingus) works well.  And for another view, the RStudio crew has some great information specifically on [R Markdown](http://www.rstudio.com/ide/docs/authoring/using_markdown).
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **Help** toolbar button for more details on using R Markdown).
+To get you started, here is some of that same information on the most common markdown you will use in your posts: Text, Headers, Lists, Links, and Images.
 
-When you click the **Knit HTML** button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+### Text
 
+So basic text... Just type it!
 
-```r
-summary(cars)
-```
+### Headers
+
+In pure markdown, there are two ways to do headers; however in R Markdown with `knitr`  those two ways get parsed a bit differently.  The first way looks like:
 
 ```
-##      speed           dist    
-##  Min.   : 4.0   Min.   :  2  
-##  1st Qu.:12.0   1st Qu.: 26  
-##  Median :15.0   Median : 36  
-##  Mean   :15.4   Mean   : 43  
-##  3rd Qu.:19.0   3rd Qu.: 56  
-##  Max.   :25.0   Max.   :120
+Header1
+=======
+```
+In the ouput HTML, this creates both an H1 header as well as a title tag.  This is useful when creating R Presentations, but less so with blog posts with Jekyll.  For the blog posts, you will use the following for headers:
+
+```
+# Header 1
+## Header 2
+...
+###### Header 6
 ```
 
+### List
 
-You can also embed plots, for example:
+Lists can be done many ways in markdown.  For this tutorial we will focus on unordered and ordered lists. An unordered list is simply done with a `-`.  For example
 
+- this list
+- is produced with
+ - the following 
+- markdown.
 
+```
+- this list
+- is produced with
+ - the following 
+- code
+```
+Notice the space after the `-` and notice the space infront, provides some nesting.  Note that only a single level of nesting is allowed.
 
-```r
-plot(cars)
+To create an ordered list, simple use numbers.  So to produce:
+
+1. this list
+2. is produced with
+ a. the following
+ b. the following again
+3. markdown.
+
+```
+1. this list
+2. is produced with
+ a. the following
+ b. the following again
+3. markdown.
 ```
 
-![plot of chunk unnamed-chunk-2](/figure/unnamed-chunk-2.png) 
+Note that the actual numbers you use to create the ordered list do not matter.  When you start a list with a number of a letter, the HTML that gets created sees it as an ordered lists and will order and label to item appropriately.
 
+### Links and Images
 
+Last type of formatting that you will likely want to accomplish with R markdown is including links and images.  While these two might seem dissimilar, I am including them together as their syntax is nearly identical.
 
+So, to create a link you would use the following:
 
+```
+[Course Website](http://scicomp2014.edc.uri.edu)
+```
 
+The text you want linked goes in the `[]` and the link itself goes in the `()`.  That's it! Now to show an image, you simply do this:
+
+```
+![CI Logo](http://www.edc.uri.edu/nrs/classes/nrs592/CI.jpg?s=150)
+```
+
+The only difference is the use of the ! at the beginning.  When parsed, the image itself will be included, and not just linked text.  As these will be on the web, the images need to also be available via the web.  You can link to local files, but will need to use a relative path and you will need to make sure the image gets moved to the class Github repoitory.  If you want to do that, talk to [Jeff](mailto:hollister.jeff@epa.gov).  It's easy, but beyond the scope of this tutorial.
+
+# Summary
+
+So, with the basics listed here, you should now be able to fork the repo, clone it locally, create your post in markdown and submit it via a pull request!

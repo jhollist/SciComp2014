@@ -135,43 +135,6 @@ hr {
 
 </style>
 
-<!-- Styles for R syntax highlighter -->
-<style type="text/css">
-   pre .operator,
-   pre .paren {
-     color: rgb(104, 118, 135)
-   }
-
-   pre .literal {
-     color: rgb(88, 72, 246)
-   }
-
-   pre .number {
-     color: rgb(0, 0, 205);
-   }
-
-   pre .comment {
-     color: rgb(76, 136, 107);
-   }
-
-   pre .keyword {
-     color: rgb(0, 0, 255);
-   }
-
-   pre .identifier {
-     color: rgb(0, 0, 0);
-   }
-
-   pre .string {
-     color: rgb(3, 106, 7);
-   }
-</style>
-
-<!-- R syntax highlighter -->
-<script type="text/javascript">
-var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
-hljs.initHighlightingOnLoad();
-</script>
 
 
 
@@ -183,7 +146,7 @@ hljs.initHighlightingOnLoad();
 
 <p>As we said, most of the course content is to be provided by the course participants. Instead of using traditional means of turning in and presenting this content, we are going to adopt a &ldquo;practice what we preach&rdquo; approach.  The rest of this post will layout what is expected in this regard.</p>
 
-<h3>Blogging your homework</h3>
+<h1>Blogging your homework</h1>
 
 <p>The first thing that will be a bit different about this class is that homework and presentations will be dealt with via the course blog.  All assignements are to be turned in as blog posts.  During the class, the blog post will serve as the basis for the discussion (much like the way material was presented during the bootcamp).  After class, the material will live on in the blog so that you may go back to it and try the reproducible examples included in these posts.  </p>
 
@@ -192,7 +155,7 @@ hljs.initHighlightingOnLoad();
 
 <p>If you are interested, the blogging platform we are using is the same platform that supports much of the Github website.  It is <a href="http://jekyllrb.com/">Jekyll</a>.  <a href="http://pages.github.com/">Github pages</a> are Jekyll aware and automatically parse all appropriately formated pages.</p>
 
-<h3>Using Git and Github to turn in assignments</h3>
+<h1>Using Git and Github to turn in assignments</h1>
 
 <p>The second thing we are trying with this course is to reinforce your understanding of Git and Github.  As such, to create your blog posts you will need to do the following:</p>
 
@@ -203,13 +166,13 @@ hljs.initHighlightingOnLoad();
 <li>Commit as necessary.  When your post is complete, push it up to your forked repository on Github, and submit a pull request to have the <code>.Rmd</code> merged into the repository.  Adam, Pete, or Jeff will take care of getting the <code>.Rmd</code> into the blog.</li>
 </ol>
 
-<h3>Writing up your work with R Markdown</h3>
+<h1>Writing up your work with R Markdown</h1>
 
 <p>Lastly, since R Markdown is new to many of you, the following provides some of the basics of R flavored Markdown and just enough YAML (i.e. &ldquo;YAML Aint Markup Language&rdquo;) to help you create your own posts.</p>
 
-<h4>YAML</h4>
+<h2>YAML</h2>
 
-<p>First, let&#39;s startm with YAML.  You won&#39;t really need to mess with this too much, but it needs to be included.  All you will need to do is include something like the following (this is the YAML for this post)</p>
+<p>First, let&#39;s start with YAML.  You won&#39;t really need to mess with this too much, but it needs to be included.  All you will need to do is include something like the following (this is the YAML for this post)</p>
 
 <pre><code>---
 layout: post
@@ -220,7 +183,7 @@ author: Jeff Hollister
 
 <p>So, for you own posts, include this same material (don&#39;t forget the <code>---</code> before and after).  Only difference will of course be the title and the author.</p>
 
-<h4>Code Chunks</h4>
+<h2>Code Chunks</h2>
 
 <p>Second thing will be including R code in your <code>.Rmd</code>.  Simplest version would look like</p>
 
@@ -259,35 +222,92 @@ plot(x,y)
 
 <p>For this class, please use informative labels for all of your code chunks.  It will be especially useful when we go to create <code>.md</code> files for the blog posts.</p>
 
-<h4>Basic Markdown</h4>
+<h2>Basic Markdown</h2>
 
-<pre><code class="markdown"># H1
-## H2
-### H3
+<p>Markdown is a tool that allows you to write simply formated text that is converted to HTML/XHTML.  Primary goal of markdwon is readibility of the raw markdown.  For the basics of markdown look at <a href="http://daringfireball.net/projects/markdown/basics">Daring Fireball</a>.  To try it out <a href="http://daringfireball.net/projects/markdown/dingus">Dingus</a> works well.  And for another view, the RStudio crew has some great information specifically on <a href="http://www.rstudio.com/ide/docs/authoring/using_markdown">R Markdown</a>.</p>
+
+<p>To get you started, here is some of that same information on the most common markdown you will use in your posts: Text, Headers, Lists, Links, and Images.</p>
+
+<h3>Text</h3>
+
+<p>So basic text&hellip; Just type it!</p>
+
+<h3>Headers</h3>
+
+<p>In pure markdown, there are two ways to do headers; however in R Markdown with <code>knitr</code>  those two ways get parsed a bit differently.  The first way looks like:</p>
+
+<pre><code>Header1
+=======
 </code></pre>
 
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the <strong>Help</strong> toolbar button for more details on using R Markdown).</p>
+<p>In the ouput HTML, this creates both an H1 header as well as a title tag.  This is useful when creating R Presentations, but less so with blog posts with Jekyll.  For the blog posts, you will use the following for headers:</p>
 
-<p>When you click the <strong>Knit HTML</strong> button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-
-<pre><code class="r">summary(cars)
+<pre><code># Header 1
+## Header 2
+...
+###### Header 6
 </code></pre>
 
-<pre><code>##      speed           dist    
-##  Min.   : 4.0   Min.   :  2  
-##  1st Qu.:12.0   1st Qu.: 26  
-##  Median :15.0   Median : 36  
-##  Mean   :15.4   Mean   : 43  
-##  3rd Qu.:19.0   3rd Qu.: 56  
-##  Max.   :25.0   Max.   :120
+<h3>List</h3>
+
+<p>Lists can be done many ways in markdown.  For this tutorial we will focus on unordered and ordered lists. An unordered list is simply done with a <code>-</code>.  For example</p>
+
+<ul>
+<li>this list</li>
+<li>is produced with
+
+<ul>
+<li>the following </li>
+</ul></li>
+<li>markdown.</li>
+</ul>
+
+<pre><code>- this list
+- is produced with
+ - the following 
+- code
 </code></pre>
 
-<p>You can also embed plots, for example:</p>
+<p>Notice the space after the <code>-</code> and notice the space infront, provides some nesting.  Note that only a single level of nesting is allowed.</p>
 
-<pre><code class="r">plot(cars)
+<p>To create an ordered list, simple use numbers.  So to produce:</p>
+
+<ol>
+<li>this list</li>
+<li>is produced with
+a. the following
+b. the following again</li>
+<li>markdown.</li>
+</ol>
+
+<pre><code>1. this list
+2. is produced with
+ a. the following
+ b. the following again
+3. markdown.
 </code></pre>
 
-<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-2"/> </p>
+<p>Note that the actual numbers you use to create the ordered list do not matter.  When you start a list with a number of a letter, the HTML that gets created sees it as an ordered lists and will order and label to item appropriately.</p>
+
+<h3>Links and Images</h3>
+
+<p>Last type of formatting that you will likely want to accomplish with R markdown is including links and images.  While these two might seem dissimilar, I am including them together as their syntax is nearly identical.</p>
+
+<p>So, to create a link you would use the following:</p>
+
+<pre><code>[Course Website](http://scicomp2014.edc.uri.edu)
+</code></pre>
+
+<p>The text you want linked goes in the <code>[]</code> and the link itself goes in the <code>()</code>.  That&#39;s it! Now to show an image, you simply do this:</p>
+
+<pre><code>![CI Logo](http://www.edc.uri.edu/nrs/classes/nrs592/CI.jpg?s=150)
+</code></pre>
+
+<p>The only difference is the use of the ! at the beginning.  When parsed, the image itself will be included, and not just linked text.  As these will be on the web, the images need to also be available via the web.  You can link to local files, but will need to use a relative path and you will need to make sure the image gets moved to the class Github repoitory.  If you want to do that, talk to <a href="mailto:hollister.jeff@epa.gov">Jeff</a>.  It&#39;s easy, but beyond the scope of this tutorial.</p>
+
+<h1>Summary</h1>
+
+<p>So, with the basics listed here, you should now be able to fork the repo, clone it locally, create your post in markdown and submit it via a pull request!</p>
 
 </body>
 
