@@ -9,8 +9,7 @@ comments: true
   </h1>
 
   <section class="byline">
-    <p><h3>{{ page.author }}</h3></p>
-    {{ page.date | date: "%B %e, %Y" }}
+    <h4>{{ page.author }}</h4> -- {{ page.date | date: "%B %e, %Y" }}
   </section>
 
   {{ content }}

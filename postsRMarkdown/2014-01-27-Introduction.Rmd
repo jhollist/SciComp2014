@@ -13,6 +13,7 @@ As we said, most of the course content is to be provided by the course participa
 The first thing that will be a bit different about this class is that homework and presentations will be dealt with via the course blog.  All assignements are to be turned in as blog posts.  During the class, the blog post will serve as the basis for the discussion (much like the way material was presented during the bootcamp).  After class, the material will live on in the blog so that you may go back to it and try the reproducible examples included in these posts.  
 
 To help faciliate the building of the blog, please use the following naming convention: 
+
 `YEAR-MO-DY-LastName.Rmd`
 
 If you are interested, the blogging platform we are using is the same platform that supports much of the Github website.  It is [Jekyll](http://jekyllrb.com/).  [Github pages](http://pages.github.com/) are Jekyll aware and automatically parse all appropriately formated pages.
@@ -30,8 +31,8 @@ The second thing we are trying with this course is to reinforce your understandi
 
 Lastly, since R Markdown is new to many of you, the following provides some of the basics of R flavored Markdown and just enough YAML (i.e. "YAML Aint Markup Language") to help you create your own posts.
 
-## YAML
-First, let's start with YAML.  You won't really need to mess with this too much, but it needs to be included.  All you will need to do is include something like the following (this is the YAML for this post)
+## YAML (YAML Ain't Markup Language)
+First, let's start with YAML.  You won't really need to mess with this too much, but it needs to be included.  All you will need to do is include something like the following at the very top of the `.Rmd` document.  This is the YAML for this post.
 
 ```
 ---

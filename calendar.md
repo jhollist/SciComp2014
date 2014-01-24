@@ -8,7 +8,7 @@ title: Course Calendar
 
 ### Day 1, Monday, Jan. 27, 2014
  - **Presenter:** Adam Smith, Pete August, and Jeff Hollister
- - **Blog:** [Course Introduction, Writing Blog Posts with R Markdown](http://scicomp2014.edc.uri.edu/posts/2014-01-27-Introduction.html)
+ - **Blog:** [Course Introduction, Writing Blog Posts with R Markdown](http://scicomp2014.edc.uri.edu/posts/2014-01-27-Hollister.html)
 
 ### Day 2, Monday Feb. 3, 2014
  - **Presenter:** Jeff Hollister
