@@ -3,7 +3,7 @@ layout: layout
 title: Resources
 ---
 <section class="content">
-## Resources for R, git, GitHub, shell, etc.
+## Resources for R, git, GitHub, Markdown, shell, etc.
 
 ### R
 - [Quick-R](http://www.statmethods.net/)
@@ -18,6 +18,9 @@ title: Resources
 - [Git Immersion](http://gitimmersion.com/)
 - [GitHub Training (video tutorials)](http://training.github.com/resources/videos/)
 - [Git with RStudio](http://nicercode.github.io/git/rstudio.html) _Note: Thanks Marissa!_
+
+### Markdown
+- [Scholarly Markdown wiki](https://github.com/scholmd/scholmd/wiki)
 
 ### shell
 
