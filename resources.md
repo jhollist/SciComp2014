@@ -17,6 +17,7 @@ title: Resources
 - [Pro Git book online, by Scott Chacon](http://git-scm.com/book)
 - [Git Immersion](http://gitimmersion.com/)
 - [GitHub Training (video tutorials)](http://training.github.com/resources/videos/)
+- [Git with RStudio](http://nicercode.github.io/git/rstudio.html) _Note: Thanks Marissa!_
 
 ### shell
 
