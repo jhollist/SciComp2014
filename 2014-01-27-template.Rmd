@@ -1,0 +1,59 @@
+---
+layout: post
+title:FirstBlog post
+author: Anne Kuhn
+---
+
+# First Header Subtitle
+## Second Header
+### Third Header
+[Link to our homepage](https://SciComp2014.edc.uri.edu)
+
+![ci logo](http://www.edc.uri.edu/nrs/classes/nrs592/CI.jpg?s=150)
+
+```{r echo=FALSE}
+# just a comment
+x<-rnorm(100)
+```
+This is simply a template for the NRS529 Blog Posts.  
+
+When you start you post all you need to do is:
+
+1. Open the template file
+2. Save this with the following naming convention: `YEAR-MO-DY-LastName.Rmd`
+3. Edit the `YAML`.
+4. Write your post
+5. Save the `.Rmd` in postsRMarkdown
+6. Commit changes (you can use the `Git` tab in RStudio).
+7. Push those changes back up to your repository on GitHub.
+8. Submit a pull request.
+
+To make it a bit easier, here are some of the things mentioned on the first day of class.
+
+This example with echo and evaluate.
+
+```{r evalAndEcho}
+x<-rnorm(100,10,5)
+y<-jitter(x,1000)
+z<-vector("character",100)
+z[x>10]<-"High"
+z[x<10]<-"Low"
+df<-data.frame(x,y,z)
+df
+```
+
+And an example that just echo's the code without evaluation:
+
+```{r noEval, eval=FALSE}
+# This is what a comment looks like
+print("Some stuff to print (but not really, becuase this isn't evaluated!")
+```
+
+Here's a plot, without echoing :
+
+```{r myPlot, echo=FALSE, fig.width=7, fig.height=6}
+with(df,plot(x,y,col=factor(z)))
+```
+
+And to get more on this, check out [the first class blog post](http://scicomp2014.edc.uri.edu/posts/2014-01-27-Hollister.html)
+
