@@ -1,9 +1,10 @@
 ---
 layout: post
 title: Course Introduction and Blog Posts with R Markdown
-author: Jeff Hollister
+author: Rahat Sharif
 ---
-
+# header
+##headertwo
 This course is a follow up to the Software Carpentry R Bootcamp hosted by the US EPA and URI Coastal Institute on Jan 13-15, 2014 at the URI Coastal Institute.  The main idea behind having a separate, semester long course was to provide pariticpants of the bootcamp an opportunity to continue practicing the skills they were introduced to and also delve more deeply into some specific applications of R.  While we intend to have a few classes led by the instructors, our hope is that most of the classes and topics will be chosen, prepared, and presented by the students in the class.  The current list of topics and date of presentation is listed on our [course calendar](http://scicomp2014.edc.uri.edu/calendar.html) 
 
 As we said, most of the course content is to be provided by the course participants. Instead of using traditional means of turning in and presenting this content, we are going to adopt a "practice what we preach" approach.  The rest of this post will layout what is expected in this regard.
