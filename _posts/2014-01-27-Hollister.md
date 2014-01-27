@@ -69,7 +69,7 @@ For the blog posts in this class, you will very likely use `eval=FALSE` on occas
 
 Lastly, each of your code chunks can have a label.  That would be accomplished with something like:
  
-    ```{r myFigure echo=FALSE}
+    ```{r myFigure, echo=FALSE}
     x<-rnorm(100)
     y<-jitter(x,1000)
     plot(x,y)

@@ -33,14 +33,14 @@ df
 
 And an example that just echo's the code without evaluation:
 
-```{r noEval eval=FALSE}
+```{r noEval, eval=FALSE}
 # This is what a comment looks like
 print("Some stuff to print (but not really, becuase this isn't evaluated!")
 ```
 
 Here's a plot, without echoing :
 
-```{r myPlot echo=FALSE fig.width=7, fig.height=6}
+```{r myPlot, echo=FALSE, fig.width=7, fig.height=6}
 with(df,plot(x,y,col=factor(z)))
 ```
 
