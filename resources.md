@@ -12,6 +12,7 @@ title: Resources
 - [A CrossValidated question on best R resources](http://stats.stackexchange.com/questions/138/resources-for-learning-r)
 - [R Language Resources](http://www.revolutionanalytics.com/r-language-resources)
 - [Free Online Instruction](http://r-dir.com/learn/courses.html)
+- [swirl: an R Package for learning R and Stats](http://swirlstats.com/)
 
 ### git & GitHub
 - [Pro Git book online, by Scott Chacon](http://git-scm.com/book)
@@ -24,6 +25,6 @@ title: Resources
 - [Scholarly Markdown wiki](https://github.com/scholmd/scholmd/wiki)
 
 ### shell
-
-More resources coming soon.  
+- [Software Carpentry Shell Lessons](http://software-carpentry.org/v4/shell/index.html)
+ 
 </section>
