@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title></title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<p>This is simply a template for the NRS529 Blog Posts.  </p>
+
+<p>When you start you post all you need to do is:</p>
+
+<ol>
+<li>Open the template file</li>
+<li>Save this with the following naming convention: <code>YEAR-MO-DY-LastName.Rmd</code></li>
+<li>Edit the <code>YAML</code>.</li>
+<li>Write your post</li>
+<li>Save the <code>.Rmd</code> in postsRMarkdown</li>
+<li>Commit changes (you can use the <code>Git</code> tab in RStudio).</li>
+<li>Push those changes back up to your repository on GitHub.</li>
+<li>Submit a pull request.</li>
+</ol>
+
+<p>To make it a bit easier, here are some of the things mentioned on the first day of class.</p>
+
+<p>This example with echo and evaluate.</p>
+
+<pre><code class="r">x &lt;- rnorm(100, 10, 5)
+y &lt;- jitter(x, 1000)
+z &lt;- vector(&quot;character&quot;, 100)
+z[x &gt; 10] &lt;- &quot;High&quot;
+z[x &lt; 10] &lt;- &quot;Low&quot;
+df &lt;- data.frame(x, y, z)
+df
+</code></pre>
+
+<pre><code>##            x       y    z
+## 1    9.52080  8.9117  Low
+## 2    6.16287  5.0884  Low
+## 3   11.98127 11.5089 High
+## 4   12.86336 12.5593 High
+## 5   15.40990 14.7359 High
+## 6   10.07027  8.6361 High
+## 7    7.00281  8.5849  Low
+## 8    3.07573  2.3489  Low
+## 9   10.23054  9.2476 High
+## 10   9.93746 10.4809  Low
+## 11   6.87055  8.5158  Low
+## 12  13.42141 14.7023 High
+## 13  12.86742 13.7237 High
+## 14   9.00847  7.2508  Low
+## 15   8.70327 10.3472  Low
+## 16  20.29944 19.1052 High
+## 17  12.32783 14.2101 High
+## 18  11.02198  9.4349 High
+## 19  13.39836 11.5157 High
+## 20   5.05418  5.2017  Low
+## 21  10.25400 10.7153 High
+## 22  13.80454 13.8475 High
+## 23   3.82563  5.7208  Low
+## 24  19.96961 20.0371 High
+## 25  11.00943 11.4073 High
+## 26   5.66948  7.6607  Low
+## 27  19.69666 21.5118 High
+## 28   0.08457  0.9433  Low
+## 29   5.42734  4.7959  Low
+## 30   3.01197  1.3195  Low
+## 31  20.55598 21.1462 High
+## 32  14.07798 12.1679 High
+## 33  11.18454 10.6558 High
+## 34  10.17968  8.8398 High
+## 35  16.96029 17.9406 High
+## 36  12.07619 11.3910 High
+## 37   5.48379  4.6599  Low
+## 38   5.84222  4.6346  Low
+## 39   4.68886  6.6638  Low
+## 40  11.37296 11.2442 High
+## 41   8.41744  8.1062  Low
+## 42  12.50867 11.0209 High
+## 43  16.01453 15.5639 High
+## 44   6.31844  5.6158  Low
+## 45  20.38600 20.1678 High
+## 46   8.29586 10.1652  Low
+## 47   4.13609  2.2171  Low
+## 48   6.29621  5.9428  Low
+## 49  13.15181 11.2397 High
+## 50  18.45158 17.5070 High
+## 51   7.24149  6.1911  Low
+## 52  10.66265 12.6100 High
+## 53  11.87401 11.9125 High
+## 54   1.27169  1.0921  Low
+## 55   7.80469  8.5708  Low
+## 56  12.92293 14.1024 High
+## 57  16.17248 15.3943 High
+## 58  12.97100 11.5499 High
+## 59  11.76647 13.5852 High
+## 60   7.35435  7.9253  Low
+## 61  10.80605  9.8378 High
+## 62   4.32533  3.2860  Low
+## 63   2.17248  3.8289  Low
+## 64   9.61442  9.3848  Low
+## 65  15.38595 16.5334 High
+## 66  15.90398 17.3757 High
+## 67  12.42209 11.3009 High
+## 68   0.70164 -0.2916  Low
+## 69  10.85863  8.9017 High
+## 70  18.29959 20.2582 High
+## 71  11.47739 12.4168 High
+## 72  19.70757 20.9516 High
+## 73   6.65503  7.7851  Low
+## 74  13.00651 12.0558 High
+## 75   7.95328  8.3468  Low
+## 76  17.09943 16.8428 High
+## 77  20.88006 20.6919 High
+## 78  16.00297 14.7021 High
+## 79   9.69637  8.5006  Low
+## 80  -0.21538 -1.0006  Low
+## 81  10.77942 11.1622 High
+## 82   8.16827  6.6487  Low
+## 83   7.30255  5.7815  Low
+## 84   8.24362  9.1876  Low
+## 85   9.63825  8.4873  Low
+## 86   6.38721  5.1856  Low
+## 87  18.29153 17.1404 High
+## 88  13.64800 14.1530 High
+## 89  20.72228 21.3146 High
+## 90   3.02167  3.5551  Low
+## 91   8.79943  9.5321  Low
+## 92  15.85122 15.7945 High
+## 93   2.42224  0.7194  Low
+## 94  10.88890 12.6582 High
+## 95   7.49463  8.8430  Low
+## 96  -0.57960  0.4627  Low
+## 97  16.46537 18.2189 High
+## 98  13.35817 12.8208 High
+## 99  15.83641 14.1718 High
+## 100 17.38258 16.5712 High
+</code></pre>
+
+<p>And an example that just echo&#39;s the code without evaluation:</p>
+
+<pre><code class="r"># This is what a comment looks like
+print(&quot;Some stuff to print (but not really, becuase this isn&#39;t evaluated!&quot;)
+</code></pre>
+
+<p>Here&#39;s a plot, without echoing :</p>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk myPlot"/> </p>
+
+<p>And to get more on this, check out <a href="http://scicomp2014.edc.uri.edu/posts/2014-01-27-Hollister.html">the first class blog post</a></p>
+
+</body>
+
+</html>
+
