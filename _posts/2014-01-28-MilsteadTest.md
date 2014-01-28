@@ -148,7 +148,7 @@ print("Some stuff to print (but not really, becuase this isn't evaluated!")
 
 Here's a plot, without echoing :
 
-![plot of chunk myPlot](/figure/myPlot.png) 
+![plot of chunk myPlot](figure/myPlot.png) 
 
 
 And to get more on this, check out [the first class blog post](http://scicomp2014.edc.uri.edu/posts/2014-01-27-Hollister.html)
