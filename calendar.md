@@ -15,7 +15,7 @@ title: Course Calendar
 
 ### Day 3, Monday, Feb 10, 2014
  - **Presenter:** Jeff Hollister
- - **Blog:** Spatial Data Analysis with R
+ - **Blog:** [Spatial Data Analysis with R](http://scicomp2014.edc.uri.edu/posts/2014-02-04-Hollister.html)
 
 ### Day 4, Monday, Feb 17, 2014
  - **Presenter:** Pete August
