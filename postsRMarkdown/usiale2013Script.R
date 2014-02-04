@@ -17,7 +17,7 @@ setwd("C:\\Documents and Settings\\JHollist\\Desktop\\GoogleDrive\\Google Drive\
 
 # Using rgdal command - readOGR - we now read in the shapefile of the counties and sample locations
 county<-readOGR("county","counties")
-sampleLoc<-readOGR(".","sampleLoc")7
+sampleLoc<-readOGR(".","sampleLoc")
 # Look at the details
 summary(county)
 county

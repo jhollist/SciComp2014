@@ -35,19 +35,25 @@ Two downsides to this are it requires ArcGIS (and its associated cost) and for e
 
 While the above options provide the full functionality of a GIS (e.g. ArcGIS), they do require additional software, licenses, maintanenace, resources, etc.  Another, more streamlined solution for integrating R and GIS is to use several packages that prove a (mostly) pure R solution. As I said, this is a recently (e.g. last 2-3 years) added functionality to R.
 
-The standard packages that I use to imbed GIS functionality to R are listed below with a bit of annotation on each.
+The standard packages that most use to imbed GIS functionality to R are listed below with a bit of annotation on each.
 
 1. `sp`: This is one of the foundational packages for dealing with spatial data in R.  It sets up the spatial data classes (e.g. `SpatialLines`, `SpatialPolygonsDataFrame`, etc.) that are used (or at least recognized) by all of the other packages. Some analysis also included in `sp`. 
-2. `rgdal`: This is another of the foundational packages, that is built of the [Geospatial Data Abstraction Library]()
-3. `rgeos`:
-4. `raster`:
+2. `rgdal`: This is another of the foundational packages, that is built of the [Geospatial Data Abstraction Library](http://www.gdal.org/).  This provides most of the utilities you will need to read and write a variety of geospatial data formats.
+3. `rgeos`: This package provides an R interface to [GEOS (Geometry Engine, Open Source)](http://trac.osgeo.org/geos/).  This gives you most of what you typically think of as "GISy" analysis.
+4. `raster`: Allows processing and analysis of raster data and also provides capability to deal with large rasters by being able to read data from disk.
 
 And, some other useful additional packages:
 
-1. `gdistance`:
-2. `geosphere`:
-3. `landsat`:
-4. `maptools`:
+1. `gdistance`: Provides tools for doing a variety of cost surface based analyses
+2. `geosphere`: Calculates Great Circle distances and provides a variety of tools for dealing with distances, bearings, etc.
+3. `landsat`: Provides processing and correction tools multi-spectral imagery (and shout out to co-maintaner of r-sig-ecology, [Sarah Goslee](http://www.ars.usda.gov/pandp/people/people.htm?personid=31752)).
+4. `maptools`: Another widely used package to faciliate reading and writing spatial data.
+
+# Examples
+
+In this section, I provide 
+
+# What's missing?
 
 
 # Getting Help
