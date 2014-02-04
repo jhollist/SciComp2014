@@ -114,11 +114,16 @@ county
 ## class       : SpatialPolygonsDataFrame 
 ## features    : 10 
 ## extent      : 2725746, 3488389, 9840147, 10348417  (xmin, xmax, ymin, ymax)
-## coord. ref. : +proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0=29.66666666666667 +lon_0=-100.3333333333333 +x_0=699999.9999999999 +y_0=3000000 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0 
+## coord. ref. : +proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0
+## =29.66666666666667 +lon_0=-100.3333333333333 +x_0=699999.9999999999 +y_0=3000000 
+## +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0 
 ## variables   : 11
-## names       : SDE_COUNTI, PERIMETER, COUNTIES_, COUNTIES_I,     COUNTY, CODE, ACRES, HECTARES, SQ_MILES, SHAPE_AREA, SHAPE_LEN 
-## min values  :          0,    577664,         2,          1,    BASTROP,   21,     0,        0,        0,  1.524e+10,    577664 
-## max values  :          0,    837252,        11,         10, WILLIAMSON,  491,     0,        0,        0,  3.166e+10,    837251
+## names       : SDE_COUNTI, PERIMETER, COUNTIES_, COUNTIES_I,     COUNTY, CODE, 
+## ACRES, HECTARES, SQ_MILES, SHAPE_AREA, SHAPE_LEN 
+## min values  :          0,    577664,         2,          1,    BASTROP,   21,     
+## 0,        0,        0,  1.524e+10,    577664 
+## max values  :          0,    837252,        11,         10, WILLIAMSON,  491,     
+## 0,        0,        0,  3.166e+10,    837251
 ```
 
 ```r
@@ -129,7 +134,9 @@ sampleLoc
 ## class       : SpatialPointsDataFrame 
 ## features    : 50 
 ## extent      : 2988502, 3217487, 9993281, 10189397  (xmin, xmax, ymin, ymax)
-## coord. ref. : +proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0=29.66666666666667 +lon_0=-100.3333333333333 +x_0=700000.0000000002 +y_0=3000000.000000001 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0 
+## coord. ref. : +proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0
+## =29.66666666666667 +lon_0=-100.3333333333333 +x_0=700000.0000000002 +y_0=3000000
+## .000000001 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0 
 ## variables   : 1
 ## names       : ID 
 ## min values  :  1 
@@ -145,7 +152,8 @@ austinNLCD
 ## dimensions  : 2254, 2572, 5797288  (nrow, ncol, ncell)
 ## resolution  : 30, 30  (x, y)
 ## extent      : -208515, -131355, 773445, 841065  (xmin, xmax, ymin, ymax)
-## coord. ref. : +proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs 
+## coord. ref. : +proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0
+## =0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs 
 ## data source : D:\DATA\DataInformatics\SciComp2014\postsRMarkdown\nlcd.tif 
 ## names       : nlcd 
 ## values      : 0, 255  (min, max)
@@ -183,11 +191,16 @@ travisCounty
 ## class       : SpatialPolygonsDataFrame 
 ## features    : 1 
 ## extent      : 2977897, 3230591, 9981999, 10200101  (xmin, xmax, ymin, ymax)
-## coord. ref. : +proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0=29.66666666666667 +lon_0=-100.3333333333333 +x_0=699999.9999999999 +y_0=3000000 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0 
+## coord. ref. : +proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0
+## =29.66666666666667 +lon_0=-100.3333333333333 +x_0=699999.9999999999 +y_0=3000000 
+## +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0 
 ## variables   : 11
-## names       : SDE_COUNTI, PERIMETER, COUNTIES_, COUNTIES_I, COUNTY, CODE, ACRES, HECTARES, SQ_MILES, SHAPE_AREA, SHAPE_LEN 
-## min values  :          0,    831561,         5,          4, TRAVIS,  453,     0,        0,        0,  2.857e+10,    831561 
-## max values  :          0,    831561,         5,          4, TRAVIS,  453,     0,        0,        0,  2.857e+10,    831561
+## names       : SDE_COUNTI, PERIMETER, COUNTIES_, COUNTIES_I, COUNTY, CODE, ACRES, 
+## HECTARES, SQ_MILES, SHAPE_AREA, SHAPE_LEN 
+## min values  :          0,    831561,         5,          4, TRAVIS,  453,     0,        
+## 0,        0,  2.857e+10,    831561 
+## max values  :          0,    831561,         5,          4, TRAVIS,  453,     0,        
+## 0,        0,  2.857e+10,    831561
 ```
 
 ```r
@@ -198,7 +211,9 @@ travisSampleLoc
 ## class       : SpatialPointsDataFrame 
 ## features    : 30 
 ## extent      : 2992872, 3194084, 9998803, 10189397  (xmin, xmax, ymin, ymax)
-## coord. ref. : +proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0=29.66666666666667 +lon_0=-100.3333333333333 +x_0=700000.0000000002 +y_0=3000000.000000001 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0 
+## coord. ref. : +proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0
+## =29.66666666666667 +lon_0=-100.3333333333333 +x_0=700000.0000000002 +y_0=3000000
+## .000000001 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0 
 ## variables   : 1
 ## names       : ID 
 ## min values  :  1 
@@ -230,7 +245,9 @@ proj4string(travisCounty)
 ```
 
 ```
-## [1] "+proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0=29.66666666666667 +lon_0=-100.3333333333333 +x_0=699999.9999999999 +y_0=3000000 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0"
+## [1] "+proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0=29
+## .66666666666667 +lon_0=-100.3333333333333 +x_0=699999.9999999999 +y_0=3000000 
+## +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0"
 ```
 
 ```r
@@ -238,7 +255,9 @@ proj4string(travisSampleLoc)
 ```
 
 ```
-## [1] "+proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0=29.66666666666667 +lon_0=-100.3333333333333 +x_0=700000.0000000002 +y_0=3000000.000000001 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0"
+## [1] "+proj=lcc +lat_1=30.11666666666667 +lat_2=31.88333333333333 +lat_0=29
+## .66666666666667 +lon_0=-100.3333333333333 +x_0=700000.0000000002 +y_0=3000000
+## .000000001 +datum=NAD83 +units=us-ft +no_defs +ellps=GRS80 +towgs84=0,0,0"
 ```
 
 ```r
@@ -246,7 +265,8 @@ proj4string(austinNLCD)
 ```
 
 ```
-## [1] "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+## [1] "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps
+## =GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 ```
 
 ```r
@@ -311,11 +331,21 @@ travisSampleLocAlb1Buffer
 ## class       : SpatialPolygonsDataFrame 
 ## features    : 1 
 ## extent      : -158641, -153641, 804463, 809463  (xmin, xmax, ymin, ymax)
-## coord. ref. : +proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs 
+## coord. ref. : +proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0
+## =0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs 
 ## variables   : 14
-## names       :                 11,                21,                 22,                23,                24,                 31,                 41,                 42,                 43,                52,                71,                  81,                 82,                 90 
-## min values  : 0.0157238470706885, 0.122902723021913, 0.0623911249656184, 0.060649124415513, 0.027276061245072, 0.0261758503713212, 0.0668836527001009, 0.0791693407903181, 0.0013752635921885, 0.318511047950857, 0.107224718070964, 0.00976437150453837, 0.0682130741725497, 0.0337398001283579 
-## max values  : 0.0157238470706885, 0.122902723021913, 0.0623911249656184, 0.060649124415513, 0.027276061245072, 0.0261758503713212, 0.0668836527001009, 0.0791693407903181, 0.0013752635921885, 0.318511047950857, 0.107224718070964, 0.00976437150453837, 0.0682130741725497, 0.0337398001283579
+## names       :                 11,                21,                 22,                
+## 23,                24,                 31,                 41,                 
+## 42,                 43,                52,                71,                  
+## 81,                 82,                 90 
+## min values  : 0.0157238470706885, 0.122902723021913, 0.0623911249656184, 0
+## .060649124415513, 0.027276061245072, 0.0261758503713212, 0.0668836527001009, 0
+## .0791693407903181, 0.0013752635921885, 0.318511047950857, 0.107224718070964, 0
+## .00976437150453837, 0.0682130741725497, 0.0337398001283579 
+## max values  : 0.0157238470706885, 0.122902723021913, 0.0623911249656184, 0
+## .060649124415513, 0.027276061245072, 0.0261758503713212, 0.0668836527001009, 0
+## .0791693407903181, 0.0013752635921885, 0.318511047950857, 0.107224718070964, 0 
+## .00976437150453837, 0.0682130741725497, 0.0337398001283579
 ```
 
 
