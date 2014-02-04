@@ -4,6 +4,7 @@ title: Spatial Data Analysis with R
 author: Jeff Hollister
 ---
 
+
 I could have entitled this post "How to Ditch ArcGIS", but that is probably a bit over the top.  Thus the more pedestrian title.  Which is OK, becuase either title would be accurate.
 
 So, my plans with the post are to introduce you to the concept of using R as a GIS.  This idea would have seemed a bit silly not too long ago and most R gurus would have suggested you simply transfer data between R and your GIS of choice (e.g. [ArcGIS](http://www.esri.com/software/arcgis), [GRASS](http://grass.osgeo.org/), [QGIS](http://www.qgis.org/en/site/), etc.).   But over the last several years there has been a suite of packages released that provide nearly all the analytical functionality of a full bore GIS.  I will provide details on a number of packages that either allow R to connect to a GIS or allow R to serve as a GIS.  The later is how I work these days.  
@@ -23,8 +24,7 @@ if (!"RPyGeo" %in% installed.packages()) {
     install.packages("RPyGeo")
 }
 library(RPyGeo)
-# Files availbfrom from figshare at
-# http://dx.doi.org/10.6084/m9.figshare.796429
+# Files availbfrom from figshare at http://dx.doi.org/10.6084/m9.figshare.796429
 rpygeo.geoprocessor("Buffer_analysis", args = list("sampleLoc.shp", "sampleLocB.shp", 
     "1000 meters"))
 
@@ -71,8 +71,8 @@ for (i in rGIS) {
     }
 }
 
-# Using rgdal command - readOGR - we now read in the shapefile of the
-# counties and sample locations
+# Using rgdal command - readOGR - we now read in the shapefile of the counties
+# and sample locations
 county <- readOGR(".", "counties")
 ```
 
@@ -224,8 +224,8 @@ So, obviously we have some issues as not everything is plotting as we expect (i.
 
 
 ```r
-# Return PROJ4 strings.  PROJ.4 is a projections library mainted by same
-# folks that maintain GEOS and GDAL.
+# Return PROJ4 strings.  PROJ.4 is a projections library mainted by same folks
+# that maintain GEOS and GDAL.
 proj4string(travisCounty)
 ```
 
@@ -268,16 +268,15 @@ So now that everything is looking good (good projections, got data, etc.), let's
 
 
 ```r
-# Now some simple GISy stuff.  Select, buffer, clip and save First select
-# the first sample location
+# Now some simple GISy stuff.  Select, buffer, clip and save First select the
+# first sample location
 travisSampleLocAlb1 <- travisSampleLocAlb[1, ]
 travisSampleLocAlb1Buffer <- gBuffer(travisSampleLocAlb1, quadsegs = 100, width = 2500, 
     id = travisSampleLocAlb1[["ID"]])
 # Convert to Spatial Polygons Data Frame so we can save data to it later.
 travisSampleLocAlb1Buffer <- SpatialPolygonsDataFrame(travisSampleLocAlb1Buffer, 
     travisSampleLocAlb1@data)
-travisSampleLocAlb1NLCD <- mask(crop(austinNLCD, travisSampleLocAlb1Buffer), 
-    travisSampleLocAlb1Buffer)
+travisSampleLocAlb1NLCD <- mask(crop(austinNLCD, travisSampleLocAlb1Buffer), travisSampleLocAlb1Buffer)
 ```
 
 ```
@@ -285,15 +284,10 @@ travisSampleLocAlb1NLCD <- mask(crop(austinNLCD, travisSampleLocAlb1Buffer),
 ```
 
 ```r
-# For the sake of making this all look pretty, we need to do some stuff with
-# the color table This step is not neccessary...
+# For the sake of making this all look pretty, we need to do some stuff with the
+# color table This step is not neccessary...
 travisSampleLocAlb1NLCD@legend@colortable <- austinNLCD@legend@colortable
 plot(travisSampleLocAlb1NLCD)
-```
-
-![plot of chunk analysis](/figure/analysis1.png) 
-
-```r
 plot(travisSampleLocAlb1, add = T, pch = 19)
 plot(travisSampleLocAlb1Buffer, lwd = 3, border = "red", add = T)
 ```

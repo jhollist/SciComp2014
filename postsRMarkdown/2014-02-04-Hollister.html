@@ -196,8 +196,7 @@ if (!&quot;RPyGeo&quot; %in% installed.packages()) {
     install.packages(&quot;RPyGeo&quot;)
 }
 library(RPyGeo)
-# Files availbfrom from figshare at
-# http://dx.doi.org/10.6084/m9.figshare.796429
+# Files availbfrom from figshare at http://dx.doi.org/10.6084/m9.figshare.796429
 rpygeo.geoprocessor(&quot;Buffer_analysis&quot;, args = list(&quot;sampleLoc.shp&quot;, &quot;sampleLocB.shp&quot;, 
     &quot;1000 meters&quot;))
 
@@ -245,8 +244,8 @@ for (i in rGIS) {
     }
 }
 
-# Using rgdal command - readOGR - we now read in the shapefile of the
-# counties and sample locations
+# Using rgdal command - readOGR - we now read in the shapefile of the counties
+# and sample locations
 county &lt;- readOGR(&quot;.&quot;, &quot;counties&quot;)
 </code></pre>
 
@@ -371,8 +370,8 @@ plot(austinNLCD, add = T)
 
 <p>So, obviously we have some issues as not everything is plotting as we expect (i.e. where&#39;s the NLCD?).  If we look more closely at our data we notice that we&#39;ve got two different projections.  Let&#39;s get them all into Albers and re-plot them.</p>
 
-<pre><code class="r"># Return PROJ4 strings.  PROJ.4 is a projections library mainted by same
-# folks that maintain GEOS and GDAL.
+<pre><code class="r"># Return PROJ4 strings.  PROJ.4 is a projections library mainted by same folks
+# that maintain GEOS and GDAL.
 proj4string(travisCounty)
 </code></pre>
 
@@ -410,23 +409,22 @@ plot(travisSampleLocAlb, add = T, pch = 19)
 
 <p>So now that everything is looking good (good projections, got data, etc.), let&#39;s work on some simple GIS analysis.  For this example we will do the equivalent of a buffer, clip, and caluclate Land Use/Land Cover proportions within that buffer.</p>
 
-<pre><code class="r"># Now some simple GISy stuff.  Select, buffer, clip and save First select
-# the first sample location
+<pre><code class="r"># Now some simple GISy stuff.  Select, buffer, clip and save First select the
+# first sample location
 travisSampleLocAlb1 &lt;- travisSampleLocAlb[1, ]
 travisSampleLocAlb1Buffer &lt;- gBuffer(travisSampleLocAlb1, quadsegs = 100, width = 2500, 
     id = travisSampleLocAlb1[[&quot;ID&quot;]])
 # Convert to Spatial Polygons Data Frame so we can save data to it later.
 travisSampleLocAlb1Buffer &lt;- SpatialPolygonsDataFrame(travisSampleLocAlb1Buffer, 
     travisSampleLocAlb1@data)
-travisSampleLocAlb1NLCD &lt;- mask(crop(austinNLCD, travisSampleLocAlb1Buffer), 
-    travisSampleLocAlb1Buffer)
+travisSampleLocAlb1NLCD &lt;- mask(crop(austinNLCD, travisSampleLocAlb1Buffer), travisSampleLocAlb1Buffer)
 </code></pre>
 
 <pre><code>## Found 1 region(s) and 1 polygon(s)
 </code></pre>
 
-<pre><code class="r"># For the sake of making this all look pretty, we need to do some stuff with
-# the color table This step is not neccessary...
+<pre><code class="r"># For the sake of making this all look pretty, we need to do some stuff with the
+# color table This step is not neccessary...
 travisSampleLocAlb1NLCD@legend@colortable &lt;- austinNLCD@legend@colortable
 plot(travisSampleLocAlb1NLCD)
 </code></pre>

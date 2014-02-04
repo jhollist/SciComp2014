@@ -3,7 +3,9 @@ layout: post
 title: Spatial Data Analysis with R
 author: Jeff Hollister
 ---
-
+```{r setup, include=FALSE, echo=FALSE}
+options(width=80)
+```
 I could have entitled this post "How to Ditch ArcGIS", but that is probably a bit over the top.  Thus the more pedestrian title.  Which is OK, becuase either title would be accurate.
 
 So, my plans with the post are to introduce you to the concept of using R as a GIS.  This idea would have seemed a bit silly not too long ago and most R gurus would have suggested you simply transfer data between R and your GIS of choice (e.g. [ArcGIS](http://www.esri.com/software/arcgis), [GRASS](http://grass.osgeo.org/), [QGIS](http://www.qgis.org/en/site/), etc.).   But over the last several years there has been a suite of packages released that provide nearly all the analytical functionality of a full bore GIS.  I will provide details on a number of packages that either allow R to connect to a GIS or allow R to serve as a GIS.  The later is how I work these days.  
