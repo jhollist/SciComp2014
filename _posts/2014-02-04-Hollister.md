@@ -356,8 +356,9 @@ The primary function that is missing from R is interactive visualization such as
 # Getting Help
 
 Aside from the normal places for getting help with R related issues (e.g. Stackoverflow, etc.).  Three additional and related sources of help are:
-1. [CRAN Analysis of Spatial Data Task View](http://cran.r-project.org/web/views/Spatial.html) 
-2. [r-sig-geo](https://stat.ethz.ch/mailman/listinfo/R-SIG-Geo/)
-3. [Applied Spatial Data Analysis with R](http://www.asdar-book.org/)
+
+- [CRAN Analysis of Spatial Data Task View](http://cran.r-project.org/web/views/Spatial.html) 
+- [r-sig-geo](https://stat.ethz.ch/mailman/listinfo/R-SIG-Geo/)
+- [Applied Spatial Data Analysis with R](http://www.asdar-book.org/)
 
 
