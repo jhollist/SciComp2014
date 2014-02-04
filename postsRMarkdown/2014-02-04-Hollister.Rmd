@@ -25,7 +25,7 @@ library(RPyGeo)
 # Files availbfrom from figshare at
 # http://dx.doi.org/10.6084/m9.figshare.796429
 rpygeo.geoprocessor("Buffer_analysis",
-args=list("sampleLoc.shp","sampleLocB.shp","1000 meters"))
+                    args=list("sampleLoc.shp","sampleLocB.shp","1000 meters"))
 
 ```
 
