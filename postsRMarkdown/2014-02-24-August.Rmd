@@ -1,0 +1,38 @@
+---
+layout: post
+title: R Commander 101: R for Wusses Who Need a Result Now
+author: Pete August
+---
+
+# Getting it up and running:
+
+1. Start R 
+2. Go to the PACKAGES pulldown and choose INSTALL packages. Select Rcmdr.
+3. If you have already installed Rcmdr, I suggest that you go to the PACKAGES pulldown and choose UPDATE packages. Select Rcmdr then update.
+4. Choose LOAD Packages pulldown. Choose Rcmdr.
+5. This will open the R Commander GUI. Minimize your R window and work in the Rcmdr GUI.
+6. Go to FILE\CHANGE WORKING DIRECTORY and navigate to where your data reside and you want your files to sit.
+
+# Loading Data:
+7. Read in a dataset by choosing DATA\IMPORT\EXCEL and point to your Excel file.
+8. Click VIEW DATASET to make sure everything came over OK
+9. You can massage your data using tools in DATA\ACTIVE DATASET and DATA\MANAGE VARIABLES.
+
+# Getting work done:
+10. Stat tools are under the STATISTICS pulldown and graphics tools are under the GRAPHICS pulldown
+
+# Your assignment:
+
+1. Watch these videos of what I just described above:
+ - [video 1](http://www.screencast.com/t/FgvKrF3Aa)
+ - [video 2](http://www.screencast.com/t/1xRO2DlDI)
+2. Download the practice [ELU dataset](www.edc.uri.edu/personal/pete/elu_data.zip)
+3. Read the data into R
+4. Bin the data into 2 equal size classes, large and small based on Area_Ha
+5. Calculate descriptive stats on ELU_Den, TOT_Den, and Comms_Den for each size class and pooled
+6. Are the data normally distributed?
+7. Are the variables correlated?
+8. Make a box plot for each variable using size classes as a grouping factor
+9. Do a T test to see if each of the variables is the same among the two size groups 
+10. Save all output and image files so you can open them in Notepad and your favorite image viewer
+

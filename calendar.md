@@ -18,15 +18,14 @@ title: Course Calendar
  - **Blog:** [Spatial Data Analysis with R](http://scicomp2014.edc.uri.edu/posts/2014-02-04-Hollister.html)
 
 ### Day 4, Monday, Feb 17, 2014
- - **Presenter:** Pete August
- - **Blog:**  R for Wusses Who Need a Result Now: Rcmdr
+ 
 
 ### Day 5, Monday, Feb 24, 2014
-- **Presenter:** Adam Smith
- - **Blog:** Coming Soon!
- 
+- **Presenter:** Pete August
+ - **Blog:**  [R Commander 101: R for Wusses Who Need a Result Now](http://scicomp2014.edc.uri.edu/posts/2014-02-24-August.html)
+  
 ### Day 6, Monday, Mar 3, 2014
- - **Presenter:**
+ - **Presenter:** Adam Smith
  - **Blog:** Coming Soon!
  
 ### Day 7, Monday, Mar 10, 2014
