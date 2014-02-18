@@ -18,7 +18,7 @@ title: Course Calendar
  - **Blog:** [Spatial Data Analysis with R](http://scicomp2014.edc.uri.edu/posts/2014-02-04-Hollister.html)
 
 ### Day 4, Monday, Feb 17, 2014
- 
+ - **CLASS CANCELLED DUE TO PRESIDENTS DAY**
 
 ### Day 5, Monday, Feb 24, 2014
 - **Presenter:** Pete August
