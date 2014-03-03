@@ -243,7 +243,46 @@ for (i in rGIS) {
         require(i, character.only = TRUE)
     }
 }
+</code></pre>
 
+<pre><code>## Loading required package: sp
+</code></pre>
+
+<pre><code>## Warning: package &#39;sp&#39; was built under R version 3.0.2
+</code></pre>
+
+<pre><code>## Loading required package: rgeos
+</code></pre>
+
+<pre><code>## Warning: package &#39;rgeos&#39; was built under R version 3.0.2
+</code></pre>
+
+<pre><code>## rgeos version: 0.3-2, (SVN revision 413M)
+##  GEOS runtime version: 3.4.2-CAPI-1.8.2 r3921 
+##  Polygon checking: TRUE 
+## 
+## Loading required package: raster
+</code></pre>
+
+<pre><code>## Warning: package &#39;raster&#39; was built under R version 3.0.2
+</code></pre>
+
+<pre><code>## Loading required package: rgdal
+</code></pre>
+
+<pre><code>## Warning: package &#39;rgdal&#39; was built under R version 3.0.2
+</code></pre>
+
+<pre><code>## rgdal: version: 0.8-16, (SVN revision 498)
+## Geospatial Data Abstraction Library extensions to R successfully loaded
+## Loaded GDAL runtime: GDAL 1.10.1, released 2013/08/26
+## Path to GDAL shared files: C:/Program Files/R/R-3.0.1/library/rgdal/gdal
+## GDAL does not use iconv for recoding strings.
+## Loaded PROJ.4 runtime: Rel. 4.8.0, 6 March 2012, [PJ_VERSION: 480]
+## Path to PROJ.4 shared files: C:/Program Files/R/R-3.0.1/library/rgdal/proj
+</code></pre>
+
+<pre><code class="r">
 # Using rgdal command - readOGR - we now read in the shapefile of the counties
 # and sample locations
 county &lt;- readOGR(&quot;.&quot;, &quot;counties&quot;)
@@ -307,7 +346,7 @@ county
 ## resolution  : 30, 30  (x, y)
 ## extent      : -208515, -131355, 773445, 841065  (xmin, xmax, ymin, ymax)
 ## coord. ref. : +proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs 
-## data source : D:\DATA\DataInformatics\SciComp2014\postsRMarkdown\nlcd.tif 
+## data source : C:\Users\Adam\Dropbox\Github\SciComp2014\postsRMarkdown\nlcd.tif 
 ## names       : nlcd 
 ## values      : 0, 255  (min, max)
 </code></pre>
