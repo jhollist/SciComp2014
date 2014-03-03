@@ -1,0 +1,270 @@
+---
+layout: post
+title: Introduction to R customization, data management, sorting, reshaping, and getting help.
+author: Adam Smith
+---
+```{r setup, include=FALSE, echo=FALSE, cache=FALSE}
+options(width=80)
+toLoad = c("ggplot2", "plyr", "reshape2", "devtools")
+sapply(toLoad, require, character.only = TRUE)
+```
+
+Perhaps as a first order of business, those linked successfully to Github can perform a pull to get this `.Rmd` file on your computer.  Then, we can walk through it together in `RStudio` with the expectation that the interactivity will aid retention.
+
+So, if you want to follow along:
+
+1. Open Git Bash
+2. Navigate to the local repository for the Scientific Computing class
+3. Perform the pull.  On my machine, it looks something like:  `git pull origin gh-pages`
+4. Then you can open this file, `2014-03-03-Smith.Rmd`, in RStudio.
+
+# Customizing R at startup
+
+Annoyed by some of R's defaults (e.g., strings as factors, p-value stars)?  Tired of typing full function names of common functions (e.g., summary, head, etc.)?  Want to load commonly used packages automatically?  Have a suite of random functions you use all the time?  No problem.  R gives you several options to meet your needs.  
+
+First, you can create a custom R profile that loads at startup.  This is simply a text file (called .Rprofile) placed in your home directory.  Don't know where your home directory is?  Start RStudio, close any open projects, and type `getwd()`. 
+
+Consider the following (simple) Rprofile:
+```{r rprofile, echo=TRUE}
+# Feeling creative?  Customize the R interactive prompt  
+options(prompt="aRRR> ")
+
+# Change some R defaults
+options(stringsAsFactors=FALSE, show.signif.stars=FALSE)
+
+# Create a new invisible environment for functions so as not to clutter your workspace.
+.env <- new.env()
+ 
+# Some useful aliases
+.env$s <- base::summary
+.env$cd <- base::setwd
+.env$pwd <- base::getwd
+ 
+# Some useful functions
+ 
+## Return names(df) in single column, numbered matrix format.
+.env$n <- function(df) matrix(names(df)) 
+ 
+## Head and tail; show the first and last 10 items of an object
+.env$ht <- function(d) rbind(head(d,10),tail(d,10))
+
+# This function runs when R starts
+.First <- function(){
+ toLoad = c("plyr", "lubridate", "reshape2", "ggplot2", "devtools")
+ sapply(toLoad, require, character.only = TRUE)
+ rm(toLoad)
+ cat("\nBack for more, eh?\n") 
+}
+
+# This function runs when R closes
+.Last <- function(){ 
+ cat("\nLeaving so soon?  You'll be back.  I know it.\n")
+}
+```
+
+Inspiration for Rprofile modifications abound online (e.g., [here][custom1] and [here][custom2]).  Importantly, notice that we've included aliases and utility functions in a hidden environment.  This keeps our workspace clean and avoids their accidental removal.  
+
+While a custom Rprofile generally works well, you may run into problems when sharing scripts with colleagues if they operate R with different defaults.  A more reproducible approach is to keep your customizations in a version-controlled script on, e.g., [Github][github] and source it at the beginning of every script.  Your collaborators then have access to it as well.  For example, assuming the `devtools` package is loaded, ypu can call in an custom script saved as a [gist][gist] using `source_gist`.  Voila!  Here's how I load my [R profile][myprofile]:
+
+```{r myprofile, echo=TRUE}
+source_gist(9216051, quiet = TRUE)
+```
+
+One final alternative, but beyond our scope, is to keep your functions in an R package (see, e.g., [here][packages]).
+
+# Plotting, managing, sorting, reshaping, and cleaning data
+
+OK, I'll admit it - `Rcmdr` houses a wider breadth of methods than I recalled (or expected).  But you'll have to throw away the training wheels (i.e., GUI) at some point.  You can only hide from the console for so long.  Data reorganization, reshaping, and cleaning are a set of common tasks for which this is likely to be the case, and one for which R is very capable.  Moreover, it's good practice to bring your raw data into R *before* you perform any manipulations or analysis.  Not only is R very capable of these manipulations, but coding them in R makes the manipulations transparent and reproducible; the same can't be said of button clicks in Excel. 
+
+We'll skip getting data into R and instead focus on some useful data manipulation functions.  Jeff covered this in [bootcamp][bootcamp].  But, to summarize your data input options, R can handle nearly any data format including `.csv`, `.sas`, `.spss`, and even `.xls` and `.xlsx` if you're patient.  To summarize the summary: make `.csv` (Excel can output these easily) and the `read.csv` command your friends.  
+
+## Plotting raw data
+
+Looking at your raw data before analysis is tremendously important.  I hesitate to skip it, but we could spend an entire semester on the many ways R gives you to look at your raw data.  On the other hand, there is lots of useful guidance online for both base graphics and `gglot2` (e.g., [here][uclaplots] and [here][ggplot2]).  The `lattice` package is another viable option.  In the interest of time, we'll simply refer you to those links and the [Getting help](#help) section below.
+
+## Sorting by one or more columns
+
+R likewise gives you many options to perform common data sorting and manipulation tasks.  We'll focus on some of the more intuitive convenience functions to perform these tasks.  Most of them reside in Hadley Wickham's `plyr` and `reshape2` packages. 
+
+We'll use the `diamonds` data set in the `ggplot2` package.  `diamonds` is a large (50000+) data set with multiple numeric and categorical variables.  
+
+```{r data, echo=TRUE}
+# Look at the description of the diamonds data
+?diamonds
+str(diamonds)
+head(diamonds, 10)
+summary(diamonds) # notice no missing values (NAs); very uncommon
+```
+
+Notice that this data set is in wide format.  That is, each of our units of observation (each diamond, in this case) is associated with multiple columns representing several measured variable.  The alternative, long format, puts each variable on its own line, in which case each observation (diamond) would be associated with multiple rows.  Most analyses in R require data in the wide format, but long format is useful in certain situations.  We'll come back to the utility of the long format later.
+
+Let's start with simple operations.  One of the most basic data frame manipulations is sorting by one or more columns.  In base R, the `order` function is the function of choice, but its syntax is a bit painful.  For example, to sort the diamond data by increasing size (carat) and decreasing price:
+
+```{r sort, echo=TRUE}
+dsort <- diamonds[with(diamonds, order(carat, -price)), ]
+# dsort <- diamonds[order(diamonds$carat, -diamonds$price), ] # equivalent sort
+head(dsort, 10)
+```
+
+Yikes.  That's pretty ugly.  The `arrange` function in `plyr` makes it far more intuitive, and should take care of your sorting needs.
+
+```{r sort2, echo=TRUE}
+dsort2 <- arrange(diamonds, carat, -price)
+head(dsort2, 10)
+```
+
+## Calculating new variables from existing columns
+
+In many analyses, variables of interest derive from modifications or combinations of raw measurements.  R again gives you multiple options to create and calculate new variables from existing columns.  We'll look at two - base R's `within` function and `plyr`'s `mutate` function.
+
+``` {r newvars, echo=TRUE}
+# Creating two new variables:
+# 1. logP: natural log of diamond price
+# 2. volume: silly estimate of diamond volume (mm<sup>3</sup>)
+
+# First, use base R 'within' function
+d <- within(diamonds, {
+  logP <- log(price) # no comma here; compare 'mutate'
+  volume <- x * y * z
+  })
+head(d)
+  
+# Now use plyr 'mutate' function
+d2 <- mutate(diamonds,
+             logP = log(price), # comma here
+             volume = x * y * z
+              )
+head(d2)
+```
+
+## Data aggregation and cross tabulation (i.e., 'pivot tables')
+
+Typically, our data sets comprise a mixture of categorical (factor) and numeric variables.   Functions applied to the different levels of one or more of these factor variables (e.g., calculating group averages) is often a useful aspect of data exploration.
+ 
+`plyr` contains functions that allow users to evaluate functions over one or more grouping variables (i.e., the levels of a categorical variable).  The `ddply` function simplifies this process.  The `dd` simply indicates that the function takes a data frame as an input and outputs a data frame.  There are other versions (e.g., `ldply`, which takes a list as an input and outputs a data frame), but `ddply` is the one you'll use most regularly.  
+
+An example will hopefully clarify.  To calculate the average size (carats) for each combination of diamond cut, clarity, and color:  
+
+``` {r aggregate, echo=TRUE}
+# First, what inputs does the function require?
+?ddply
+
+# How many groups are we talking about here?
+with(diamonds, length(levels(cut)) * length(levels(clarity)) * length(levels(color)))
+
+# Now, create a new data frame that takes the diamond data and calculates mean carat size by cut, clarity, and color combinations
+dcut <- ddply(diamonds, .(cut, clarity, color), summarize,
+              meancarat = mean(carat, na.rm = TRUE), # Don't need na.rm in this case, but often will
+              ndiamonds = length(carat)) # # diamonds in each calculation
+head(dcut, 10)
+
+# Note that any function can be applied over the grouping variable(s)
+dcut2 <- ddply(diamonds, .(cut, clarity, color), summarize,
+                    sdcarat = sd(carat, na.rm = TRUE),
+                    nonsense = sqrt(median(x * y / z, na.rm = TRUE)))
+```
+
+A cross-tabulation (~ pivot table) with the `xtab` function can make `ddply`'s output a little easier on the eyes.  With three or more grouping variables, flattening the cross-tabulation with `ftable` may keep your head from exploding.
+
+``` {r crosstab, echo=TRUE}
+# Two grouping variable example
+xtabs(meancarat ~ cut + clarity, data = dcut)
+
+# The order determines the arrangement of the table
+xtabs(meancarat ~ clarity + cut, data = dcut)
+
+# Three grouping variables without flattening... 
+# Not run...
+# xtabs(meancarat ~ cut + clarity + color, data = dcut)
+
+# Try it if you dare, but it's a bit painful to read.  Flattening helps.
+ftable(xtabs(meancarat ~ cut + clarity + color, data = dcut))
+```
+
+## Joining data frames
+
+Combining multiple data frames based on shared variables is another common data management task.  The base R `merge` function will work, but we'll stick with the `plyr` version - `join`.  To keep it simple, we'll illustrate only basic `join` usage; check the documentation for other options (e.g., data frames with incomplete matching).
+
+``` {r join, echo=TRUE}
+?join
+
+# Join two diamond data frames
+# Three shared columns (cut, clarity, and color)
+head(dcut); head(dcut2)
+
+# Join by cut, clarity, and color combination
+djoin <- join(dcut, dcut2, by = c("cut", "clarity", "color"))
+head(djoin)
+```
+
+## Using `ddply` with `mutate` to create observation-level variables relevant to group values
+
+Sometimes it may be relevant to construct a new variable for your data set relative to a group-level measure.  For example, the absolute price of a diamond may be less important than the price of that diamond relative to similar diamonds.  In these cases, you can use `ddply` with `mutate` rather than `summarize` to calculate these relative variables.
+
+``` {r groupvars, echo=TRUE}
+# Notice that using 'mutate' preserves all other variables in the data frame; using 'summarize' would preserve only the newly-created variable and the grouping variable(s).
+diamonds2 <- ddply(diamonds, .(cut, color, clarity), mutate,  
+                    priceDev = price - mean(price, na.rm = TRUE),  
+                    priceRes = resid(lm(price ~ carat)))
+head(diamonds2)
+```
+
+`ddply` is quite useful and intuitive for variable creation and data manipulation, but it can be a bit slow when you're dealing with very large data frames (e.g., hundreds of thousands or millions of records).  Nonetheless, modifications are available to speed it up in these instances (e.g., [here][speedup]), and `plyr` functions can run in parallel on multiple core machines.  Finally, for R 3.0.2 or later, Hadley has created a new incarnation of `ddply`.  The `dplyr` package is even more intuitive, allows you to chain commands together in a logical order, and much, much faster.  Hopefully we can revisit `dplyr` later this semester.
+
+## Converting from wide format to long format for, e.g., plotting
+
+We've noted that most analyses require data in wide format with a single record (row) for each sample and multiple columns for the variables measured on/during that sample.  A reminder of what wide format data looks like:
+
+``` {r wide, echo=FALSE}
+head(diamonds)
+````
+
+In some instances, however, it may be useful to convert wide format data into long format data.  For example, `ggplot2` is usually happier with data in long format.  The `melt` function in the `reshape2` package makes this process easy, although the base R `reshape` function can be useful in more complicated situations, but I've never had to use it.
+
+``` {r melt, echo=TRUE}
+dmelt <- melt(diamonds, id.vars = c("cut", "clarity", "color"))
+rbind(head(dmelt), tail(dmelt))
+```
+
+With this particularly data set in long format, we can easily visualize certain aspects of the data in `ggplot2`.
+
+``` {r plotmelt, echo=TRUE, warning=FALSE}
+dplot <- ggplot(dmelt, aes(x = value, fill=cut)) + geom_histogram(alpha=0.2, position="identity") + facet_wrap(~ variable, scales = "free_x")
+suppressMessages(print(dplot)) # Preventing binwidth messages
+
+```
+
+Additionally, `melt`ing the data provides an additional way to reshape the data (with the `dcast` function in `reshape2`) by applying functions to different groups of the data, but that functionality is largely, if not entirely, available in `ddply` and `dplyr`.  Not surprisingly, there are [many ways][skinacat] to tackle these problems using base R and other packages.
+
+<a name="help"/>
+# Getting help 
+
+Invariably, you're going to run into problems (e.g., error messages, warnings).  This is true whether you're using R, SAS, SPSS, or whatever.  But there is lots of R help at your fingertips, and much of it is useful!  For example:
+
+- `?function` will give you the help page of a function or data set (e.g., `?ddply`, `?mtcars`)
+- `example(function)` asks R to run an example(s) of the function
+- `??searchterm` will look for a search term in all packages on CRAN (e.g., `??split`)
+- `RSiteSearch("search terms")` will search the R site for your search terms (e.g., `RSiteSearch("plyr reshape2"))
+- `RSiteSearch("{search terms}")` will search for an exact phrase (e.g., `RSiteSearch("{linear mixed model}")`)
+- rseek.org is the R Google
+- Speak of the devil, copy your error message from the console and [Google](http://www.google.com) it with the relevant package name (e.g., "length(rows) == 1 is not TRUE" ddply)
+- Search tags in [Stack Overflow](http://stackoverflow.com/) (e.g., [R] [plyr] [ddply])
+- [StackExchange][SE]: like Stack Overflow but for statistics 
+- [Crantastic][cranny]: search through packages on CRAN
+- Our [resources][resources] page
+
+
+[custom1]: http://stackoverflow.com/questions/1189759/expert-r-users-whats-in-your-rprofile
+[custom2]: http://gettinggeneticsdone.blogspot.com.es/2013/07/customize-rprofile.html
+[github]: http://www.github.com
+[gist]: https://gist.github.com
+[myprofile]: https://gist.github.com/adamdsmith/9216051
+[packages]: http://rmflight.github.io/posts/2014/02/package_dev_documentation.html
+[bootcamp]: https://github.com/iglpdc/2014-01-13-uri/blob/gh-pages/rLessons/Data.md
+[uclaplots]: http://www.ats.ucla.edu/stat/r/gbe/default.htm
+[ggplot2]: http://docs.ggplot2.org/current/
+[speedup]: http://stackoverflow.com/questions/3685492/r-speeding-up-group-by-operations/3686241#3686241
+[skinacat]: http://lamages.blogspot.com/2012/01/say-it-in-r-with-by-apply-and-friends.html
+[SE]: http://stats.stackexchange.com
+[cranny]: http://crantastic.org
+[resources]: http://scicomp2014.edc.uri.edu/resources.html
