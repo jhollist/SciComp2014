@@ -26,7 +26,7 @@ title: Course Calendar
   
 ### Day 6, Monday, Mar 3, 2014
  - **Presenter:** Adam Smith
- - **Blog:** Coming Soon!
+ - **Blog:** Introduction to R customization, data management, sorting, reshaping, and getting help.
  
 ### Day 7, Monday, Mar 10, 2014
  - SPRING BREAK!
