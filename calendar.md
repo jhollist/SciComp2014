@@ -65,5 +65,6 @@ title: Course Calendar
  - **Blog:** Coming Soon!
  
 ### Day 16, TBD
- - Class Poster Session
+ - Finals,
+ - no exam but topic: TBD
  </section>
