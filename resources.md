@@ -17,6 +17,7 @@ title: Resources
 - [twoturials - 2 min videos for simple tasks in R](http://www.twotorials.com/)
 - [FlowingData tutorials, requires membership?](http://flowingdata.com/category/tutorials/)
 - [R-bloggers](http://www.r-bloggers.com/)
+- [Jeff Leek's Thoughts on R Package Development](https://github.com/jtleek/rpackages)
 
 ### git & GitHub
 - [Pro Git book online, by Scott Chacon](http://git-scm.com/book)
