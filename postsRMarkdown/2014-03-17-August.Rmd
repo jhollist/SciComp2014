@@ -18,7 +18,6 @@ This is where I would put something interesting and improtant
 - And this is where I would put lists
 - And bulleted  things
 
-5. Save the `.Rmd` in postsRMarkdown
 6. Commit changes (you can use the `Git` tab in RStudio).
 7. Push those changes back up to your repository on GitHub.
 8. Submit a pull request.
