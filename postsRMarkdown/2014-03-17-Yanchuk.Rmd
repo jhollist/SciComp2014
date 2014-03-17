@@ -1,0 +1,9 @@
+---
+layout: post
+title: Introduction Test Post
+author: Michael Yanchuk
+---
+
+My name is Michael Yanchuk.  I am participating in the Scientific Computing course to learn how to work with R tools and packages related to database management.  I have interest in water resources and have been developing a database with Watershed Watch volunteer water quality monitoring records from as far back as 1988.  
+
+On Monday, April 21st I will be presenting on MySQL database packages for R, and related query options.
