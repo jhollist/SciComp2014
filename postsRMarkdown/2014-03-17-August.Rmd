@@ -1,0 +1,24 @@
+---
+layout: post
+title: Pete's Post
+author: Pete
+---
+
+This is Pete's Proto Blog Post
+
+If I wasn't such a dork, I would have done this for the R Commander lesson.
+
+Oh fork-it, let's try this in markdown.
+
+PVA
+
+Header1
+This is where I would put something interesting and improtant
+
+- And this is where I would put lists
+- And bulleted  things
+
+5. Save the `.Rmd` in postsRMarkdown
+6. Commit changes (you can use the `Git` tab in RStudio).
+7. Push those changes back up to your repository on GitHub.
+8. Submit a pull request.
