@@ -1,0 +1,14 @@
+---
+layout: post 
+title: SciComp BLOG input
+author: Greg Gahlinger
+---
+
+Initial SciComp blog input submitted.
+Research interests: GIS, hydrographic surveying, maritime trade
+Academic status: URI Graduate student in Marine Affairs/GIS & Remote Sensing
+Career objective: work in hydrographic surveying industry and supporting maritime trades
+Motives for enrolling in SciComp Bootcamp: I lack computer programming skills and anticipate using R and other software applications (python, MATLAB) for future graduate research and professional endeavors.
+Motives for continuing with the NRS 592 
+
+
