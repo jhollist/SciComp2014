@@ -1,0 +1,13 @@
+---
+layout: post
+title: About me
+author: Rahat Sharif
+---
+
+I'm a first year graduate student at the University of Rhode Island in the Masters of Environmental Science and Mangement Program, study Conservation Biology and also enrolled in the Graduate Certificate in GIS and Remote Sensing. 
+
+I am currently working with Veronica Berounsky and Lucie Maranda at the Bay Campus looking at nutrient dynamics in the Narrow River, as well as working with Marisa Mazzotta and Kristen Hychka at EPA looking at human barriers to restoration, specifically riparian areas. 
+
+I decided to take this R course because it seemed like a more elegant way of handling large data sets than excel, as well as the fact that using R is a skill that is in high demand. 
+
+---
