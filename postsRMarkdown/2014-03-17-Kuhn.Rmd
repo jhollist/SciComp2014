@@ -1,0 +1,7 @@
+---
+layout: post
+title: Perfect Way to End a Monday
+author: Anne Kuhn
+---
+I am a Research Ecologist at US EPA Narragansett lab. My research interests are mainly framed within a watershed perspective investigating how land use influences effect water quality and aquatic habitat in streams, lakes and estuaries. I work with geospatial environmental data sets from a range of sources-federal, state, NGO and volunteer monitoring databases. I like the challenges associated with working with multiple stakeholders to solve local problems within a regional or landscape perspective-local based solutions using the broader landacape scale to inform decisions that will benefit ecological function within watersheds. I decided to take this class so Jeff Hollister would not get so exasperated everytime he turns around in the office we share and catches me using SAS. I seriously want to become proficient enough at using R and all it's cool-hipster accessories that someday I will be able to do statistical analyses from anywhere, preferably a quiet corner of a beach bar in the tropics with a good wi-fi connection.  I also thought this would be an excellent way to end a Monday each week. Start slow and taper off.
+
