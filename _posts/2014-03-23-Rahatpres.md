@@ -70,41 +70,41 @@ Design a program that is user friendly, takes minimal user inputs, and gives out
 ### Attempt one:
 
 ```r
-#This is for Upper Pond only
-#Column names cannot start with numbers, or R will append an x to the label
-#Slashes will be turned into "."
-#I added a few notes for the user so that they wouldn’t run into of the caveats that I had
+# This is for Upper Pond only Column names cannot start with numbers, or R
+# will append an x to the label Slashes will be turned into '.' I added a
+# few notes for the user so that they wouldn’t run into of the caveats that
+# I had
 
-Nutrient_Interpolation<-function(fileloc,filename,depthfield,nutrientfield,volumefield)
-{
-
-#The inputs were the relevant variables to run the function
+Nutrient_Interpolation <- function(fileloc, filename, depthfield, nutrientfield, 
+    volumefield) {
+    
+    # The inputs were the relevant variables to run the function
+    
+    # Set workspace
+    setwd(fileloc)
+    D <- read.csv(filename)  #load data
+    n <- D[[depthfield]]
+    for (i in nutrientfield) {
+        predict <- approx(D[[depthfield]], D[[i]], xout = c(0.5, 1, 2, 3, 4, 
+            5, 6, 7, 8, 9, 10, 11))  #Does the interpolation
+        # print(predict$y) print(i) print(predict$x*-1)# debugging
+        plot(predict$y, predict$x * -1, xlab = "nutrient_value", ylab = "depth", 
+            col = "blue")
+        # a nice graph, as well as a check to see if it’s working
+        points(D[[i]], D[[depthfield]] * -1, col = "yellow", pch = 11)
+        plottitle <- colnames(D)
+        title(main = plottitle[i], sub = "Upper Pond")
+        print(colnames(predict))
+        colnames(predict) <- c("depth", plottitle[3])
+        n <- table(n, predict$y)
+        print(n)
+    }
+    n <- D[[volumefield]]
+    write.csv(n, file = "interpolated_values.csv")  #getting the data
+    
+}
 ```
 
-  #Set workspace
-		setwd(fileloc)
-		D<-read.csv(filename) #load data
-		n<- D[[depthfield]]
-	for (i in nutrientfield){
-			predict<-	approx(D[[depthfield]],D[[i]],xout=c(0.5,1,2,3,4,5,6,7,8,9,10,11)) #Does the interpolation
-			#print(predict$y)
-			#print(i)
-			#print(predict$x*-1)# debugging
-			plot(predict$y,predict$x*-1, xlab="nutrient_value",ylab="depth", col="blue") 
-      # a nice graph, as well as a check to see if it’s working
-			points(D[[i]],D[[depthfield]]*-1,col="yellow",pch=11)
-			plottitle<-colnames(D)
-			title(main=plottitle[i], sub="Upper Pond")
-			print(colnames(predict))
-			colnames(predict)<-c("depth",plottitle[3])
-			n<-table(n,predict$y)
-						print(n)
-						}
-						n<-D[[volumefield]]
-		write.csv(n,file="interpolated_values.csv")#getting the data
-
-	}
-```
 
 #### Issues with attempt one
 

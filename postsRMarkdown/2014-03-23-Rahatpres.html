@@ -238,59 +238,59 @@ A computer is much more reliable at calculating things than a human being. </p>
 
 <h3>Attempt one:</h3>
 
-<pre><code class="r">#This is for Upper Pond only
-#Column names cannot start with numbers, or R will append an x to the label
-#Slashes will be turned into &quot;.&quot;
-#I added a few notes for the user so that they wouldn’t run into of the caveats that I had
+<pre><code class="r"># This is for Upper Pond only Column names cannot start with numbers, or R
+# will append an x to the label Slashes will be turned into &#39;.&#39; I added a
+# few notes for the user so that they wouldn’t run into of the caveats that
+# I had
 
-Nutrient_Interpolation&lt;-function(fileloc,filename,depthfield,nutrientfield,volumefield)
-{
+Nutrient_Interpolation &lt;- function(fileloc, filename, depthfield, nutrientfield, 
+    volumefield) {
 
-#The inputs were the relevant variables to run the function
+    # The inputs were the relevant variables to run the function
+
+    # Set workspace
+    setwd(fileloc)
+    D &lt;- read.csv(filename)  #load data
+    n &lt;- D[[depthfield]]
+    for (i in nutrientfield) {
+        predict &lt;- approx(D[[depthfield]], D[[i]], xout = c(0.5, 1, 2, 3, 4, 
+            5, 6, 7, 8, 9, 10, 11))  #Does the interpolation
+        # print(predict$y) print(i) print(predict$x*-1)# debugging
+        plot(predict$y, predict$x * -1, xlab = &quot;nutrient_value&quot;, ylab = &quot;depth&quot;, 
+            col = &quot;blue&quot;)
+        # a nice graph, as well as a check to see if it’s working
+        points(D[[i]], D[[depthfield]] * -1, col = &quot;yellow&quot;, pch = 11)
+        plottitle &lt;- colnames(D)
+        title(main = plottitle[i], sub = &quot;Upper Pond&quot;)
+        print(colnames(predict))
+        colnames(predict) &lt;- c(&quot;depth&quot;, plottitle[3])
+        n &lt;- table(n, predict$y)
+        print(n)
+    }
+    n &lt;- D[[volumefield]]
+    write.csv(n, file = &quot;interpolated_values.csv&quot;)  #getting the data
+
+}
 </code></pre>
 
-<p>#Set workspace
-        setwd(fileloc)
-        D&lt;-read.csv(filename) #load data
-        n&lt;- D[[depthfield]]
-    for (i in nutrientfield){
-            predict&lt;-   approx(D[[depthfield]],D[[i]],xout=c(0.5,1,2,3,4,5,6,7,8,9,10,11)) #Does the interpolation
-            #print(predict$y)
-            #print(i)
-            #print(predict$x<em>-1)# debugging
-            plot(predict$y,predict$x</em>-1, xlab=&ldquo;nutrient_value&rdquo;,ylab=&ldquo;depth&rdquo;, col=&ldquo;blue&rdquo;) 
-      # a nice graph, as well as a check to see if it’s working
-            points(D[[i]],D[[depthfield]]*-1,col=&ldquo;yellow&rdquo;,pch=11)
-            plottitle&lt;-colnames(D)
-            title(main=plottitle[i], sub=&ldquo;Upper Pond&rdquo;)
-            print(colnames(predict))
-            colnames(predict)&lt;-c(&ldquo;depth&rdquo;,plottitle[3])
-            n&lt;-table(n,predict$y)
-                        print(n)
-                        }
-                        n&lt;-D[[volumefield]]
-        write.csv(n,file=&ldquo;interpolated_values.csv&rdquo;)#getting the data</p>
+<h4>Issues with attempt one</h4>
 
-<pre><code>}
-</code></pre>
+<ul>
+<li>Too many user inputs</li>
+<li>  Only writes to one column</li>
+<li>  Depths are hard wired into the function (which won’t work if another site is being studied with the same method)</li>
+<li>  Doesn’t give the output needed</li>
+<li>  Need something 
 
-<pre><code>
-#### Issues with attempt one
+<ul>
+<li>More complete</li>
+<li>Less complicated for the user</li>
+</ul></li>
+</ul>
 
-* Too many user inputs
-*   Only writes to one column
-*   Depths are hard wired into the function (which won’t work if another site is being studied with the same method)
-*   Doesn’t give the output needed
-*   Need something 
-  * More complete
-  * Less complicated for the user
+<h3>Attempt two:</h3>
 
-
-### Attempt two:
-
-
-```r
-Rahatcalc &lt;- function() {
+<pre><code class="r">Rahatcalc &lt;- function() {
     fileloc &lt;- readline(&quot;Where is the file?: &quot;)
     setwd(fileloc)
     filename &lt;- readline(&quot;What is the name of your file?: &quot;)
