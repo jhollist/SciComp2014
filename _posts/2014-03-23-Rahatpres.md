@@ -6,7 +6,7 @@ author: Rahat Sharif
 
 ### Background:
 I’m part of a group at the bay campus, including Dr. Veronica Berounsky and Dr. Lucie  Maranda that studies the Narrow River. 
-![sitemap](https://dl.dropboxusercontent.com/sh/raw4hjjak4lseao/8fATBgnXDQ/Screen%20Shot%202014-03-23%20at%206.08.06%20PM.png)
+![sitemap](https://dl.dropboxusercontent.com/sh/raw4hjjak4lseao/8fATBgnXDQ/Screen%20Shot%202014-03-23%20at%206.08.06%20PM.png?dl=1&token_hash=AAEq2ih9CinuRuXDSOfYfspN5YzlA83BQmh0ZUFfC4rIPQ)
 
 I take datasets like this:
 
