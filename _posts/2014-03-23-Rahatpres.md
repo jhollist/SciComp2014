@@ -1,13 +1,8 @@
 ---
 layout: post
-title: Nutrient Totals in R
+title: Nutrient Totals in R (Or leaving MS Excel behind)
 author: Rahat Sharif
 ---
-
-Nutrients and The Narrow River (Or leaving MS Excel behind)
-================================
-Rahat Sharif
----------------
 
 ### Background:
 I’m part of a group at the bay campus, including Dr. Veronica Berounsky and Dr. Lucie  Maranda that studies the Narrow River. 
