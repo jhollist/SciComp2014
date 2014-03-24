@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Nutrients and The Narrow River (Or leaving MS Excel behind)</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Nutrients and The Narrow River (Or leaving MS Excel behind)</h1>
+
+<h2>Rahat Sharif</h2>
+
+<h3>Background:</h3>
+
+<p>I’m part of a group at the bay campus, including Dr. Veronica Berounsky and Dr. Lucie  Maranda that studies the Narrow River. 
+<img src="https://dl.dropboxusercontent.com/sh/raw4hjjak4lseao/8fATBgnXDQ/Screen Shot 2014-03-23 at 6.08.06 PM.png?dl=1&amp;token_hash=AAEq2ih9CinuRuXDSOfYfspN5YzlA83BQmh0ZUFfC4rIPQ" alt="sitemap"/></p>
+
+<p>I take datasets like this:</p>
+
+<p><img src="https://dl.dropboxusercontent.com/s/50j57r6zfy9d3zg/exampledata.png?dl=1&amp;token_hash=AAHfJatfo4n5H16dh_qLck-hIkzm5IZdsreGc4HZF-brEQ,%20height=20%" alt="exdata"/></p>
+
+<p>Try to turn them into something visually and quantitatively meaningful for analysis, like this:</p>
+
+<p><img src="https://dl.dropboxusercontent.com/s/j7ibt6mpnwwdwi3/DOtime.png?dl=1&amp;token_hash=AAF43qy0TEdL4cxMW1qdGDVri0xlbgUTg3AZnFzLM9ymKQ, height="60"" alt="DOex"/></p>
+
+<p>One of the Study sites we’re interested is the Northern Basin in the Narrow River. It’s a 13 meter deep basin with an hypoxic bottom, overlain with oxygenated waters. We’re currently looking at an overturn that occurred in 2007. Our question is, what is happening to the nutrients right after the overturn?</p>
+
+<p><img src="https://dl.dropboxusercontent.com/s/a0gv1s29ys4d19y/sitemap.png?dl=1&amp;token_hash=AAHw-YDp8k4Y_KDiY_VsDfOp7doSydPd-qm44nI5Q6v29g" alt="upperpond"/></p>
+
+<p>At first we used a program called Ocean Data View to look at nutrients the way I had  above.</p>
+
+<p>This however, while visually effective, is not very meaningful from a quantitative view. </p>
+
+<p>It is pretty obvious that oxygen is increasing, but is there a definitive way to quantify this? This is a more important question to answer where looking at graphs that may not be so telling, such as:</p>
+
+<p><img src="https://dl.dropboxusercontent.com/s/e2kpvnmwu4joj6w/AM.png?dl=1&amp;token_hash=AAHNoYLzkVDDJsEKLMQ_V4IOqVG6fGJsLlRuL7SeC-Z9gw" alt="amexamp"/></p>
+
+<p>There does seem to be a large amount of Ammonium before October 30, but in order to definitively say that, the concentration needs to be put into a larger context: </p>
+
+<p><img src="https://dl.dropboxusercontent.com/s/hqeq5w7lwwwzkcx/383259_10200994441160210_822413854_n.jpg?dl=1&amp;token_hash=AAFp2RvI-kBzeFAOjF4uqz4VJWfys-0vs4esf1NIJl1dmQ" alt="3d"/></p>
+
+<p>Since the pond is shaped like a bowl, a reading at the bottom (gray area), while high, may not contribute that much to the rest of the basin given its small volume.</p>
+
+<p>In order to account for the size of the basin, we decided to multiply the volumes at each depth with the corresponding concentration, then get a sum, and graph the change overtime, calculating would be done in excel like this: </p>
+
+<p><img src="https://dl.dropboxusercontent.com/s/3rlei49o2scqc8h/Calc.png?dl=1&amp;token_hash=AAGvgWj0BJVhhmHlXi3tE3i1HH_dY4iTDoA8CQz5gTBOgQ" alt="calc"/></p>
+
+<p>The end result should be a nice graph like this:</p>
+
+<p><img src="https://dl.dropboxusercontent.com/s/z4ax4fq7aje9jub/amquan2.png?dl=1&amp;token_hash=AAFuiX2V2DqrEvtHZj_qgLwslzIUcX84oLd0zG28LInBfw" alt="AMquan"/></p>
+
+<h3>So what’s the problem?:</h3>
+
+<p>In order to employ this method, points need to be interpolated for each graph.
+For example, if nutrient samples were taken at 0.5, 3, and 5, interpolations will need to be done to find the concentrations for 1, 2, and 4; for each profile. This cannot be automated because there is no set pattern for how nutrients change in the water column (the slope of the line will change between different known points).</p>
+
+<p>Interpolations will have to be done for each profile, between every pair of known points, in excel.</p>
+
+<h3>Why use R?:</h3>
+
+<p>This method may be repeated for future studies on the Narrow River, and should be repeatable using the same reliable method, as well as well-organized and easy to document.  Not so easy with excel. 
+A computer is much more reliable at calculating things than a human being. </p>
+
+<p>Using R (with the kinks figured out) should be a lot less time consuming than using excel.</p>
+
+<h3>My Plan:</h3>
+
+<p>Design a program that is user friendly, takes minimal user inputs, and gives out a nice graph. </p>
+
+<h3>Attempt one:</h3>
+
+<pre><code>#This is for Upper Pond only
+#Column names cannot start with numbers, or R will append an x to the label
+#Slashes will be turned into &quot;.&quot;
+I added a few notes for the user so that they wouldn’t run into of the caveats that I had
+
+Nutrient_Interpolation&lt;-function(fileloc,filename,depthfield,nutrientfield,volumefield)
+{
+</code></pre>
+
+<p>#The inputs were the relevant variables to run the function</p>
+
+<pre><code>  #Set workspace
+        setwd(fileloc)
+        D&lt;-read.csv(filename) #load data
+        n&lt;- D[[depthfield]]
+    for (i in nutrientfield){
+            predict&lt;-   approx(D[[depthfield]],D[[i]],xout=c(0.5,1,2,3,4,5,6,7,8,9,10,11)) #Does the interpolation
+            #print(predict$y)
+            #print(i)
+            #print(predict$x*-1)# debugging
+            plot(predict$y,predict$x*-1, xlab=&quot;nutrient_value&quot;,ylab=&quot;depth&quot;, col=&quot;blue&quot;) 
+      # a nice graph, as well as a check to see if it’s working
+            points(D[[i]],D[[depthfield]]*-1,col=&quot;yellow&quot;,pch=11)
+            plottitle&lt;-colnames(D)
+            title(main=plottitle[i], sub=&quot;Upper Pond&quot;)
+            print(colnames(predict))
+            colnames(predict)&lt;-c(&quot;depth&quot;,plottitle[3])
+            n&lt;-table(n,predict$y)
+                        print(n)
+                        }
+                        n&lt;-D[[volumefield]]
+        write.csv(n,file=&quot;interpolated_values.csv&quot;)#getting the data
+
+    }
+</code></pre>
+
+<h4>Issues with attempt one</h4>
+
+<ul>
+<li>Too many user inputs</li>
+<li>  Only writes to one column</li>
+<li>  Depths are hard wired into the function (which won’t work if another site is being studied with the same method)</li>
+<li>  Doesn’t give the output needed</li>
+<li>  Need something 
+
+<ul>
+<li>More complete</li>
+<li>Less complicated for the user</li>
+</ul></li>
+</ul>
+
+<h3>Attempt two:</h3>
+
+<pre><code>    Rahatcalc&lt;-function(){
+    fileloc&lt;-readline(&quot;Where is the file?: &quot;)
+    setwd(fileloc)
+    filename&lt;-readline(&quot;What is the name of your file?: &quot;)
+    ds&lt;-paste(filename,&quot;.csv&quot;,sep=&quot;&quot;)
+    x&lt;-read.csv(ds)
+    profile&lt;-readline(&quot;What are the depths of your profile?: &quot;)
+    volume&lt;-readline(&quot;What are the volumes of your profile?: &quot;)
+    variable&lt;-readline(&quot;Name of variable of interest: &quot;)
+</code></pre>
+
+<p>User is prompted for inputs instead of needing to remember what to input</p>
+
+<pre><code>    for (z in x[[&quot;Date&quot;]]){
+      for (i in x[[variable]]){
+          predict&lt;-approx(x[[&quot;Depth&quot;]],x[[variable]],xout=profile)
+          interp&lt;-append(interp,predict*volume)
+        totals&lt;-append(totals,sum(interp))
+            history&lt;-append(history,z)
+      }
+      results&lt;-data.frame(totals,history)
+   }
+             #title&lt;-readline(&quot;What is the name of your study site?: &quot;)
+       #answer&lt;-readline(&quot;Do you want a graph? Y/N&quot;)
+       #if (answer== Y){
+         #library(ggplot2)
+            #ggplot(results,aes(x=history,y=total)}
+        #else(){answer2&lt;-readline(&quot;Do you want to save your file? Y/N&quot;))
+        #if answer2==Y(){
+        #   write.table(results,file==&quot;&quot;}
+        #}
+    }
+</code></pre>
+
+<h4>About attempt two</h4>
+
+<ul>
+<li>Prompts the user</li>
+<li>R does the rest automatically</li>
+<li>Needs more debugging</li>
+<li>Needs to be more user friendly</li>
+<li>Work in progress</li>
+</ul>
+
+</body>
+
+</html>
+
