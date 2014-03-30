@@ -144,7 +144,7 @@ hr {
 <body>
 <h1>The Inspiration</h1>
 
-<p>This blog post/ class presentation was inspired by my Oceanography 555 class. In that class we are analyzing imagery with Matlab to isolate objects through thresholding and add additional clarity to underwater remote sensing. The functionality of Matlab was easier to pick up due to knowing a small amount of R, and I wondered if these operations would be possible with R.</p>
+<p>This blog post/ class presentation was inspired by my Oceanography 555 class. In that class we are analyzing imagery with Mat lab to isolate objects through thresholding and add additional clarity to underwater remote sensing. The functionality of Mat lab was easier to pick up due to knowing a small amount of R, and I wondered if these operations would be possible with R.</p>
 
 <h2>Starting Out</h2>
 
@@ -162,7 +162,7 @@ library(ImageMagick)
 
 <h2>Problems!</h2>
 
-<p>Unfortunately that code does not work, ImageMagick required by the adimpro package is not itself a R package. The program can be found at <a href="http://http://www.imagemagick.org/%22Convert,%20Edit%20and%20Compose%20Images%22">ImageMagick</a>. ImageMagick is compatible with a variety of coding languages and Operating systems. Once ImageMagick is installed we can properly intialize &#39;adimpro&#39; the package will not function without ImageMagick! </p>
+<p>Unfortunately that code does not work, ImageMagick required by the adimpro package is not itself a R package. The program can be found at <a href="http://http://www.imagemagick.org/%22Convert,%20Edit%20and%20Compose%20Images%22">ImageMagick</a>. ImageMagick is compatible with a variety of coding languages and Operating systems. Once ImageMagick is installed we can properly initialize &#39;adimpro&#39; the package will not function without ImageMagick! </p>
 
 <pre><code>install.packages(&quot;mmand&quot;)
 library(mmand)
@@ -180,12 +180,11 @@ updateR()
 
 <h2>Images</h2>
 
-<p>We can&#39;t practice image processing without images, I will be using some images from my OCG class to run a few examples I have created, and have made some LandSAT images and a picture of a pug in a sweater available for later examples. I created an images directory in my project folder for convenience.</p>
+<p>We can&#39;t practice image processing without images, I will be using some images from my OCG class to run a few examples I have created, and have made some Landsat images and a picture of a pug in a sweater available for later examples. I created an images directory in my project folder for convenience.</p>
 
 <h2>Importing Images</h2>
 
-<pre><code>{r data, echo=TRUE}
-ls(&quot;package:adimpro&quot;) # This function shows all the commands of a particular package
+<pre><code>ls(&quot;package:adimpro&quot;) # This function shows all the commands of a particular package
 ?read.image # To learn more about what the read.image command does. after exploring the read.image command help it is clearly the right command
 img &lt;- read.image(&quot;images/coral_cc.png&quot;) #This command will assign img variable as the coral image
 show.image(img, new=TRUE) # Viewing an image within R, in a new window
@@ -217,9 +216,11 @@ grid.raster(coral_plot) # Plots the image
 
 <h2>Subsetting</h2>
 
+<p>An important aspect of image processing is reducing the effective size of the image to allow for easier distrubtion.</p>
+
 <pre><code>nrow(coral)
 ncol(coral)
-coral_sub &lt;- coral[seq(1, 724, 2), seq(1, ncol(coral), 2),] # Two ways to subset one with the value returned from nrow(coral) other just utilizes ncol to calculate it within the subset. Final comma important due to the image being an arry with three layers red, green and blue. using nrow and ncol makes the subset easier to transfer to images of varying size.
+coral_sub &lt;- coral[seq(1, 724, 2), seq(1, ncol(coral), 2),] # Two ways to subset one with the value returned from nrow(coral) other just utilizes ncol to calculate it within the subset. Final comma important due to the image being an array with three layers red, green and blue. using nrow and ncol makes the subset easier to transfer to images of varying size.
 window() # Opens a new graphic window in R quartz() on mac. This will make the different between the two images apparent
 coral_ras &lt;- as.raster(coral_sub)
 grid.raster(coral_ras) # These commands plot the new subsetted image due to the resolution of the plot view may appear no different, if exported it is now composed of 1/2 the pixels.
@@ -246,6 +247,10 @@ writePNG(coral_sub, target = &quot;images/coral_1.png&quot;)
 writePNG(coral_sub2, target = &quot;images/coral_2.png&quot;) #Export png files to our image folder
 </code></pre>
 
+<p><img src="https://dl.dropbox.com/s/lzve7q3uezx7i50/coral_2.png" alt="Coral"/></p>
+
+<p>The subsetted images are perfect to embed in the blog post!</p>
+
 <h2>Return to Adimpro</h2>
 
 <p>I spoke too soon, adimpro did have some functions I ended up using some of the conversion like rgb2hsi(). However this was a clunky process, which involved importing images into then out of and then back into R.</p>
@@ -257,16 +262,18 @@ scahsi2 &lt;- readJPEG(&quot;images/scahsi.jpg&quot;)
 scasat &lt;- scahsi2[,,2]
 kernel&lt;-shapeKernel(5,5, type = &quot;disc&quot;)
 scadil &lt;- dilate(scasat, kernel) # A function that should enlarge objects in the image, erode is the opposite function, both can reduce noise in an image when used properly
-writePNG(scadil, &quot;images/scadil.png&quot;) # Last step would be thresholding this out put but not 100% certain how that can be acheived in R
+writePNG(scadil, &quot;images/scadil.png&quot;) # Last step would be thresholding this out put but not 100% certain how that can be achieved in R
 </code></pre>
+
+<p><img src="https://dl.dropbox.com/s/ga4qkbwxplzs4k1/scasat.png" alt="Scallops"/></p>
 
 <h2>Terrestrial Remote Sensing - Normalized Difference Vegetation Index (NDVI)</h2>
 
-<p>After exploring the options available for photo processing I wanted to do something with a greater connection with my own interest. I set out to create a function that would create an NDVI from two Landsat images then average the images together and output them.NDVI is a relationship between visible and infrared reflectance that has been show to correlate with vegetation biomass. If you are interested in following along from this point the images are available at <a href="https://www.dropbox.com/sh/fvtaeaftlsavrag/xQEMxuW7Vg" title="Landsat images and Pug">Dropbox</a>. All images are in a zip but this is a large file so be warned.</p>
+<p>After exploring the options available for photo processing I wanted to do something with a greater connection with my own interest. I set out to create a function that would create an NDVI from two Landsat images then average the images together and output them.NDVI is a relationship between visible and infrared reluctance that has been show to correlate with vegetation biomass. If you are interested in following along from this point the images are available at <a href="https://www.dropbox.com/sh/fvtaeaftlsavrag/xQEMxuW7Vg" title="Landsat images and Pug">Dropbox</a>. All images are in a zip but this is a large file so be warned.</p>
 
 <pre><code>LandNDVI &lt;- function() { # A function to calculate NDVI from red and near infrared band images from the same LandSAT scene
-red &lt;- readTIFF(file.choose()) # User imputs the red band 
-nir &lt;- readTIFF(file.choose()) # User imputs the infrared band
+red &lt;- readTIFF(file.choose()) # User inputs the red band 
+nir &lt;- readTIFF(file.choose()) # User inputs the infrared band
 fin &lt;- (nir - red)/(red+nir)
 writeTIFF(fin, &quot;images/NDVI.tif&quot;)
 }
@@ -279,11 +286,14 @@ NDVI2 &lt;- readTIFF(&quot;images/Final/NDVI1.tif&quot;)
 NDVIAV &lt;- (NDVI1 + NDVI2)/2
 </code></pre>
 
-<p>I then analyzed these images in ArcMap to insure they had been averaged on a pixel by pixel level. Combining this idea, and the previous function to create a baseline function would be useful, but I was unsure exactly how to do it.</p>
+<p>Combining this idea, and the previous function to create a baseline function would be useful, but I was unsure exactly how to do that.</p>
+
+<p>I then analyzed these images in ArcMap to insure they had been averaged on a pixel by pixel level. They need to be georeferenced to a higher resolution image, due to differences in parameters during each image collection date. 
+<img src="https://dl.dropbox.com/s/k3tagrpqt2mkbnu/ndvi.PNG" alt="Landat"/></p>
 
 <h2>Final Example</h2>
 
-<p>One last example image, and question. The only process I could not replicate with R was thresholding. Both with adimpro function segment() which seemed promising or base R functions. I know there is most likely a simple way to do this, but I have had no luck. That is where the final example comes into play within the LandSAT image folder I have a picture of a pug, who needs his outfit isolated from the larger image.</p>
+<p>One last example image, and question. The only process I could not replicate with R was thresholding. Both with adimpro function segment() which seemed promising or base R functions. I know there is most likely a simple way to do this, but I have had no luck. That is where the final example comes into play within the Landsat image folder I have a picture of a pug, who needs his outfit isolated from the larger image.</p>
 
 <pre><code>PUG &lt;- readJPEG(&quot;images/PUG.jpg&quot;)
 PUGRAS &lt;- as.raster(PUG)
@@ -294,11 +304,22 @@ grid.raster(PUGRAS2)
 
 </code></pre>
 
-<p>That is the image, and the red band of the image as a grayscale image. I want to query the image with a certain threshold and get back a boolean matrix that can be turned into a raster. I am sure there is a simple way to do this that I am missing. </p>
+<p>That is the image, and the red band of the image as a gray scale image. I want to query the image with a certain threshold and get back a Boolean matrix that can be turned into a raster. I am sure there is a simple way to do this that I am missing.</p>
 
 <h2>Conclusion</h2>
 
-<p>Accomplishing image processing similar to Matlab is possible using R packages and base R. Especially useful are the image read/write packages that allow you to manipulate images as an array or matrix. </p>
+<p>Accomplishing image processing similar to Mat lab is possible using R packages and base R. Especially useful are the image read/write packages that allow you to manipulate images as an array or matrix. </p>
+
+<h2>Required Packages</h2>
+
+<ul>
+<li>png</li>
+<li>jpeg</li>
+<li>tiff</li>
+<li>mmand</li>
+<li>grid </li>
+<li>adimpro - requires ImageMagick</li>
+</ul>
 
 </body>
 
