@@ -25,6 +25,8 @@ title: Resources
 - [GitHub Training (video tutorials)](http://training.github.com/resources/videos/)
 - [Git with RStudio](http://nicercode.github.io/git/rstudio.html) _Note: Thanks Marissa!_
 - [Keep your forked repo up-to date](https://help.github.com/articles/fork-a-repo)
+ - [Add upstream remote](https://help.github.com/articles/fork-a-repo#step-3-configure-remotes)
+ - [Fetch, then merge](https://help.github.com/articles/fork-a-repo#pull-in-upstream-changes)
 
 ### Markdown
 - [Scholarly Markdown wiki](https://github.com/scholmd/scholmd/wiki)
