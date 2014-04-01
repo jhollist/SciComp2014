@@ -33,8 +33,8 @@ title: Course Calendar
  - No Class
  
 ### Day 8, Monday, Mar 17, 2014
-- **Presenter:**
- - **Blog:** Coming Soon!
+- **Presenter:** Adam Smith and Jeff Hollister
+ - **Blog:** Hands-on/Review: How to Submit a Blog Post and Review of Scripting with R
  
 ### Day 9, Monday, Mar 24, 2014
  - **Presenter:** Rahat Sharif
