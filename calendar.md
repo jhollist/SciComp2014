@@ -57,8 +57,8 @@ title: Course Calendar
  - **Blog:** Pivot table type operations in R
  
 ### Day 14, Monday, Apr 28, 2014
- - **Presenter:**
- - **Blog:** Coming Soon!
+ - **Presenter:** Greg Gahlinger
+ - **Blog:** Extracting zip codes from an Excel text field with R 
  
 ### Day 15, Monday, May 5, 2014
  - **Presenter:** Ocean Mist Staff
