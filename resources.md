@@ -31,5 +31,9 @@ title: Resources
 
 ### shell
 - [Software Carpentry Shell Lessons](http://software-carpentry.org/v4/shell/index.html)
+
+### Reproducible Research
+- [Karl Broman's Course](http://kbroman.github.io/Tools4RR)
+- Work in progress: [Reproducibility Guide: rOpenSci Hackathon](http://ropensci.github.io/reproducibility-guide)
  
 </section>
