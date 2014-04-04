@@ -1,0 +1,13 @@
+---
+layout: post
+title: First Post!
+author: Q Kellogg
+---
+
+A little information about myself:
+My research interests encompass all things water resources. My focus is on nitrogen (N) cycling in watersheds with a goal of informing local land use decisions to minimize N delivery to coastal waters. Coastal ecosystems are generally N limited, so a little N goes a long way. 
+
+Currently I'm working with colleagues at URI and UConn developing a web-tool called [N-Sink](http://www.edc.uri.edu/nsinkv2/). N-Sink uses particle tracking to estimate N removal along a flowpath (source to outlet) from landscape N sinks encountered along the way (wetlands, lower-order streams and lakes/ponds). Using maps, N-Sink highlights N sources and landscape N sinks. The spatial extent of the webtool is coastal Rhode Island and eastern Connecticut, with a goal of extending that spatial extent after we've established the format of the user interface and maps.
+
+I decided to take the bootcamp and continue with the class because I'm very interested in learning how to use R to analyze environmental data. I've taken a couple of Coursera courses on data analysis using R, as well as a basic stats course that included R coding, and am looking for opportunities to challenge myself, continue learning, and produce something useful for the larger community. This final goal is probably a ways away, but I can dream.
+

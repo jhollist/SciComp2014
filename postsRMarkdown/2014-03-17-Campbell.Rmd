@@ -1,0 +1,9 @@
+---
+layout: post
+title: Introduction: Anthony Campbell
+author: Anthony Campbell
+---
+
+# Anthony Campbell
+
+  I am a first year Masters of Environmental Science and Management (MESM) student with a focus in Remote Sensing and Spatial Analysis. I currently work at the Environmental Data Center. I took the the Software Carpentry workshop to learn the basics of coding with a focus on the scientific applications. I want to utilize R to do basic statistical analysis on spatial data. The workshop was a great introduction and left me craving additional expertise, which is why I am taking this class!

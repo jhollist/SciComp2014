@@ -1,0 +1,183 @@
+---
+layout: post
+title: Guide to Basic Image Processing with R
+author: Anthony Campbell
+---
+# The Inspiration
+
+This blog post/class presentation was inspired by my Oceanography class. In that class we are analyzing imagery with Matlab to isolate objects through thresholding and add additional clarity to underwater remote sensing. The functionality of Matlab was easier to pick up due to knowing a small amount of R, and I wondered if these operations would be possible with R.
+
+## Starting Out
+
+To begin I looked for a Cran task view and found [Medical Imaging](http://cran.r-project.org/web/views/MedicalImaging.html "Cran Task View"). This lead me to packages mmand, and adimpro. I stumbled upon importing packages png, jpeg, and tiff, all of which import files of their namesakes into R as matrices or arrays. 
+
+Next I installed and initialized these packages starting with Adaptive Smoothing of Digital Images (adimpro).
+``` {r imagepacks1, echo=TRUE, eval=FALSE}
+install.packages("adimpro")
+library(adimpro)
+
+install.packages("ImageMagick")
+library(ImageMagick)
+```
+## Problems!
+
+Unfortunately that code does not work.  ImageMagick is required by the adimpro package but is not itself a R package. The program can be found at [ImageMagick](http://http://www.imagemagick.org). ImageMagick is compatible with a variety of coding languages and Operating systems. Once ImageMagick is installed we can properly initialize 'adimpro'; the package will not function without ImageMagick! 
+
+```{r imagepacks2, echo=TRUE, eval=FALSE}
+install.packages("mmand")
+library(mmand)
+```
+At this point while working on the blog, I realized my R was out of date. Leading to a small aside for windows users only.
+
+Not wanting to open my web browser and download a new version of R, I decided to look for a package to do it for me! With very little searching I found the 'installR' package.
+
+```{r install, echo=TRUE, eval=FALSE}
+install.packages("installr")
+library(installr)
+updateR()
+```
+The package has the ability to read the latest R news, and I believe update git and other software via the R interface. I found it neat and useful. 
+
+## Images
+
+We can't practice image processing without images. I will be using some images from my OCG class to run a few example scripts I have created, and have made some Landsat images and a picture of a pug in a sweater available for later examples. I created an images directory in my project folder for my own convenience.
+
+## Importing Images
+```{r example_adimpro,eval =FALSE, echo=TRUE}
+ls("package:adimpro") # This function shows all the commands of a particular package
+help(read.image) # To learn more about what the read.image command does. after exploring the read.image command help it is clearly the right command
+img <- read.image("images/coral_cc.png") #This command will assign the coral image to the img variable 
+show.image(img, new=TRUE) # Viewing an image within R, in a new window
+```
+```{r image_sub, eval=FALSE, echo = TRUE}
+img_sub <- img[seq(1, nrow(img), 2), seq(1, ncol(img), 2),] # Should Subset every other row and column of an array.
+img2 <- as.array(img) # Should convert the image into an array, stays in adimpro format
+```
+## Adimpro Problems
+
+Imported images are in an Adimpro format which was incompatible with most base R commands that I attempted and other image processing packages. The package is focused on a few specialized functions, that I will utilize briefly further along. The packages functionality is limited by its formats lack of compatibility with R.
+
+## Processing: Trying Again
+
+The coral image was used during class to show the effect of Gaussian blurring and image decimation. The image is in Portable Network Graphics format (png), therefore importing into R requires the png package.
+```{r png, echo=TRUE, eval=FALSE}
+install.packages("png")
+library(png) # png package does exactly what you expect read and write png files into and out of R, the files are converted to arrays or matrices.
+library(grid)
+coral <- readPNG("images/coral_cc.png") # Imports the image as an array; can import as a raster with native = TRUE
+coral_plot <- as.raster(coral) # Base graphic operation to convert an array or matrix into a raster
+grid.raster(coral_plot) # Plots the image
+```
+## Subsetting
+An important aspect of image processing is reducing the effective size of the image to allow for easier distribution and analysis.
+```{r subset2, echo=TRUE, eval=FALSE}
+# Two ways to subset:
+  # one with the value returned from nrow(coral)
+  # the other uses ncol to calculate it within the subset. 
+# Final comma important due to the image being an array with three layers red, green and blue. 
+# using nrow and ncol makes the subset easier to transfer to images of varying size.
+nrow(coral)
+ncol(coral)
+coral_sub <- coral[seq(1, 724, 2), seq(1, ncol(coral), 2), ] 
+windows() # Opens a new graphic window in R quartz() on mac. This will make the different between the two images apparent
+coral_ras <- as.raster(coral_sub)
+grid.raster(coral_ras) # These commands plot the new subsetted image due to the resolution of the plot view may appear no different, if exported it is now composed of 1/2 the pixels.
+```
+## Smoothing
+### Mathematical Morphology in Any Number of Dimensions (mmand package)
+Mmand package is useful in conjunction with any of the imported arrays and has a variety of smoothing, closing, dilating, opening, and eroding functions that are necessary for working with underwater photography.
+```{r smooth, echo=TRUE, eval=FALSE}
+ls("package:mmand")
+kernel <- gaussianKernel(.3,.3) # creates an gaussian mask to smooth the image
+coral_smooth <- gaussianSmooth(coral, kernel) #Smooths the image
+coral_sub <- coral_smooth[seq(1, nrow(coral_smooth), 2), seq(1, ncol(coral_smooth), 2),] 
+coral_ras <- as.raster(coral_sub)
+windows()
+grid.raster(coral_ras)
+coral_smooth2 <- gaussianSmooth(coral_sub, kernel) 
+coral_sub2 <- coral_smooth2[seq(1, nrow(coral_smooth2), 2), seq(1, ncol(coral_smooth2), 2),]
+coral_ras2 <- as.raster(coral_sub2)
+windows()
+grid.raster(coral_ras2) # The two images are very different with smoothing at each stage, the second image would function well as a thumbnail image on a website, detail has been maintained even while drastically shrinking the size.
+writePNG(coral_sub, target = "images/coral_1.png")
+writePNG(coral_sub2, target = "images/coral_2.png") #Export png files to our image folder
+```
+![Coral](https://dl.dropbox.com/s/lzve7q3uezx7i50/coral_2.png)
+
+The subsetted images are perfect to embed in the blog post!
+
+## Return to Adimpro
+
+I spoke too soon, adimpro did have some functions I ended up using for conversion such as rgb2hsi(). However this was a clunky process, which involved importing images into, then out of, and then back into R.
+```{r scallops,echo=TRUE, eval=FALSE}
+scallop <- read.image("images/scallop_orig.jpg")
+scahsi <- rgb2hsi(scallop) # Converts an image from rgb to hue saturation and intensity
+write.image(scahsi, "images/scahsi.jpg") # adimpro objects must be exported out of R and brought back in to work with mmand
+scahsi2 <- readJPEG("images/scahsi.jpg")
+scasat <- scahsi2[,,2]
+kernel<-shapeKernel(5,5, type = "disc")
+scadil <- dilate(scasat, kernel) # A function that should enlarge objects in the image, erode is the opposite function, both can reduce noise in an image when used properly
+writePNG(scadil, "images/scadil.png") # Last step would be thresholding this out but not 100% certain how that can be achieved in R
+```
+![Scallops](https://dl.dropbox.com/s/ga4qkbwxplzs4k1/scasat.png)
+
+At this point it would be time to threshold the image, but as discussed later this is the one operation I was not able to replicate in R.
+
+## Terrestrial Remote Sensing - Normalized Difference Vegetation Index (NDVI)
+
+After exploring the options available for photo processing I wanted to do something with a greater connection to my own academic interest. I set out to create a function that would create an NDVI from two Landsat images then average the images together and output them. NDVI is a relationship between visible and infrared reflectance that has been show to correlate with biomass of vegetation. If you are interested in following along from this point the images are available at [Dropbox](https://www.dropbox.com/sh/fvtaeaftlsavrag/xQEMxuW7Vg). All images are in a zip but this is a large file so be warned, pug image is seperate and small if you want to manipulate that.
+
+```{r landsat, echo=TRUE, eval=FALSE}
+LandNDVI <- function() { # A function to calculate NDVI from red and near infrared band images from the same LandSAT scene
+red <- readTIFF(file.choose()) # User inputs the red band 
+nir <- readTIFF(file.choose()) # User inputs the infrared band
+fin <- (nir - red)/(red+nir)
+writeTIFF(fin, "images/NDVI.tif")
+}
+```
+While the function works, I would like to give it greater functionality, with prompting the user for the desired name of the final tiff, and making it clear that red band image is inputted first. 
+```{r ndvi, echo=TRUE, eval=FALSE}
+NDVI1 <- readTIFF("images/Final/NDVI.tif")
+NDVI2 <- readTIFF("images/Final/NDVI1.tif")
+NDVIAV <- (NDVI1 + NDVI2)/2
+```
+
+
+Combining this idea and the previous function to create a baseline function would be useful, but I was unsure exactly how to do that.
+
+I then analyzed these images in ArcMap to insure they had been averaged on a pixel by pixel level, they had but all was not right. The images needed to be georeferenced before calculating ndvi, due to differences in parameters during their collection dates.  
+
+![Landat](https://dl.dropbox.com/s/k3tagrpqt2mkbnu/ndvi.PNG)
+
+
+
+## Final Example
+
+One last example image, and a question. The only process I could not replicate with R was thresholding. Both with the adimpro function segment() which seemed promising or base R functions. I know there is most likely a simple way to do this, but I have had no luck. That is where the final example comes into play within the Landsat image folder I have a picture of a pug, who needs his sweater isolated from the larger image.
+
+![pug](https://www.dropbox.com/sh/fvtaeaftlsavrag/xQEMxuW7Vg#lh:null-PUG.jpg)
+
+```{r pug, echo=TRUE, eval=FALSE}
+PUG <- readJPEG("images/PUG.jpg")
+PUGRAS <- as.raster(PUG)
+grid.raster(PUGRAS)
+PUGRED <- PUG[,,1]
+PUGRAS2 <- as.raster(PUGRED)
+grid.raster(PUGRAS2)
+
+```
+That is the image, and the red band of the image as a gray scale image. I want to query the image with a certain threshold and get back a Boolean matrix that could then be turned into an image. I am sure there is a simple way to do this that I am missing.
+
+
+## Conclusion
+
+Accomplishing image processing similar to Matlab is possible using a combination of R packages and base R. Especially useful are the image read/write packages that allow you to manipulate images as an array or matrix. My success was limited due to still learning about both R and image processing.
+
+## Required Packages
+
+  * png
+  * jpeg
+  * tiff
+  * mmand
+  * grid 
+  * adimpro - requires ImageMagick
