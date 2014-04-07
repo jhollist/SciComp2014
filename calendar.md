@@ -45,8 +45,8 @@ title: Course Calendar
  - **Blog:** [Guide to basic image processing with R](http://scicomp2014.edc.uri.edu/posts/2014-03-30-Campbell.html)
  
 ### Day 11, Monday, Apr 7, 2014
- - **Presenter:**
- - **Blog:** Coming Soon!
+ - **Presenter:** Jeff Hollister
+ - **Blog:** Reproducible Presentations with Slidify and RStudio
  
 ### Day 12, Monday, Apr 14, 2014
  - **Presenter:**
