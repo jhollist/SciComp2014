@@ -18,6 +18,10 @@ As the standard for presentations for so long has been .ppt(x), using a differen
 
 # Styling
 
+Styling tends to be one of the biggest sources of dithering when it comes to creating presentations (for associated developer term see [yak shaving](http://en.wiktionary.org/wiki/yak_shaving)) .  Reproducible presentaitons are no different.  Only difference is you do need to know some CSS in order to customize presenations yourself.
+
+We are not going to spend too much time on this, but if you want to see some of what is required to make changes you can (warning: shameless self-promotion ahead) read through a blog post of mine on the general 
+
 # Required YAML
 
 # Output Frameworks
