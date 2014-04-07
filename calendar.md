@@ -34,7 +34,7 @@ title: Course Calendar
  
 ### Day 8, Monday, Mar 17, 2014
 - **Presenter:** Adam Smith and Jeff Hollister
- - **Blog:** Hands-on/Review: How to Submit a Blog Post and Review of Scripting with R
+ - **Blog:** [Hands-on/Review: How to Submit a Blog Post and Review of Scripting with R](http://scicomp2014.edc.uri.edu/calendar.html)
  
 ### Day 9, Monday, Mar 24, 2014
  - **Presenter:** Rahat Sharif
