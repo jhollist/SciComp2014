@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reproducible Presentations: Slidify and RStudio
+title: Reproducible Presentations with Slidify and RStudio
 author: Jeff Hollister
 ---
 
