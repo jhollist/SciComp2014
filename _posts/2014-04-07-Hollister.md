@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reproducible Presentations: Slidify and RStudio
+title: Reproducible Presentations with Slidify and RStudio
 author: Jeff Hollister
 ---
 
@@ -28,25 +28,29 @@ Also, you can look at some [custom CSS ](https://github.com/jhollist/epablogpres
 
 The first method for creating presentations we will talk about is `slidify`, created by [Ramnath Vaidyanathan](https://github.com/ramnathv) who has also created some other great packages including `rCharts` and `rMaps`.  Getting a presentation up and running is quite simple.  The following code should be sufficient:
 
-```{r echo=T, eval=FALSE}
+
+```r
 # Install and load necessary packages
 install.packages("devtools")
 library(devtools)
-install_github('slidify','ramnathv')
-install_github('slidifyLibraries','ramnathv')
+install_github("slidify", "ramnathv")
+install_github("slidifyLibraries", "ramnathv")
 library(slidify)
 
 # Creates the skeleton for the present
-author('scicomp')
+author("scicomp")
 ```
+
 
 With this done, you can now fire up your editor of choice (we will just do this directly in RStudio) and edit `index.Rmd'
 
 When you have your .Rmd edited to your satisfaction run the following code:
 
-```{r echo=T, eval=FALSE}
-slidify('index.Rmd')
+
+```r
+slidify("index.Rmd")
 ```
+
 
 This will create the `index.html` and that file can now be viewed in any browser (err, if that means Chrome, Firefox, or Safari).
 
