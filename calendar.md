@@ -49,8 +49,8 @@ title: Course Calendar
  - **Blog:** Reproducible Presentations with Slidify and RStudio
  
 ### Day 12, Monday, Apr 14, 2014
- - **Presenter:**
- - **Blog:** Coming Soon!
+ - **Presenter:** Adam Smith
+ - **Blog:** `dplyr` and other cool things
  
 ### Day 13, Monday, Apr 21, 2014
  - **Presenter:** Michael Yanchuk
