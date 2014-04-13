@@ -1,0 +1,109 @@
+---
+layout: post
+title: Using dplyr, and a comparison with plyr.
+author: Adam Smith
+---
+```{r setup, include=FALSE, echo=FALSE, cache=FALSE}
+options(width=80)
+toLoad = c("ggplot2", "plyr", "dplyr")
+sapply(toLoad, require, character.only = TRUE)
+```
+
+## Prelims
+
+Much like last time, it may be beneficial to open this `.Rmd` file to follow along.  I think the easiest thing to do is browse to the raw version on Github and open this URL in the 'Open File' dialog box.
+
+Note that dplyr requires at least [R 3.0.3 ("Warm Puppy")][R]; R 3.1 was recently released.
+
+## What is dplyr?
+
+From [Hadley][introdplyr]:
+
+>dplyr is a new package which provides a set of tools for efficiently manipulating datasets in R. dplyr is the next iteration of plyr, focussing on only data frames. dplyr is faster, has a more consistent API and should be easier to use. 
+
+There are several improvements:
+* individual functions correspond to most common operations; each function is optimized to do only one thing efficiently
+* chaining commands with `%.%` (will change to `%>%` in next version?)
+* much faster computations
+* anything you can do to a local data frame you can also do to a remote database table (e.g., MySQL, SQLite)
+
+## Manipulation functions
+
+Five functions handle most of the data manipulation:
+1. `filter`: subset rows.  Multiple conditions combined by `&` only; `|` is not available.
+2. `select`: subset columns.  Multiple columns can be returned.
+3. `arrange`: reorder rows.  Accomodates multiple inputs and ascending/descending order.
+4. `mutate`: add new columns, possibly based on other columns; multiple inputs create multiple columns.
+5. `summarize`: calculate any function within groups, thus reducing each group to a single row. Multiple inputs create multiple output summaries.
+
+## Chaining commands
+
+Nested R commands (e.g., multiple functions applied to a data frame) are often difficult to read because the order of the operations proceeds from the innermost to the outermost functions.  Consequently, the arguments for these outermost functions occur a long way away from the actual function.  dplyr allows you to chain, or pipe, commands using the `chain` or `%.%` functions to sequence the operations linearly, and thus much more logically.  
+
+Let's compare plyr and dplyr with an example from our [first go round][ddplydiam] in which we aggregated diamonds by cut, clarity, and color and calculated a couple of summary functions on these 280 groups.
+
+``` {r aggregate, echo=TRUE}
+# Here's how we did it with the ddply function in plyr
+dcut <- ddply(diamonds, .(cut, clarity, color), summarize,
+              meancarat = mean(carat, na.rm = TRUE), # Don't need na.rm in this case, but often will
+              ndiamonds = length(carat)) # no. diamonds in each calculation
+head(dcut, 10)
+
+# The chained dplyr version
+dcut2 <- diamonds %.% # start by specifying the data.frame
+  group_by(cut, clarity, color) %.%  # The specify the grouping variables
+  summarize(
+    meancarat = mean(carat, na.rm = TRUE), 
+    ndiamonds = length(carat)
+  )
+head(dcut2, 10)
+```
+
+Hadley offers a nice [vignette][introdplyr2] of the basic functionality.  dplyr will [soon][chainchange] change the chain command from `%.%` to the `%>%` operator from the [magrittr package][magrittr].
+
+## Speed test between dplyr and `ddply`
+
+In addition to the neater and more logical flow of code available with dplyr, its is considerably faster than base R and plyr functions.  Although with most ecological data sets you'll likely not notice the difference in computational time, they can be substantial on larger data sets with many groups.  Let's do a simple speed test on a large data set (say, 10 million rows and 100,000 groups).
+
+``` {r speedtest, echo=TRUE, eval=FALSE}
+set.seed(6546)
+nobs <- 1e+07
+df <- data.frame(group = as.factor(sample(1:100000, nobs, replace = TRUE)),
+                 variable = rpois(nobs, 100))
+print(object.size(df), units = "MB") 
+str(df)
+
+# Calculate mean of variable within each group
+# First, use ddply
+system.time(grpmean <- ddply(df, .(group), summarize,
+                             grpmean = mean(variable)))
+# user  system elapsed 
+# 135.28   28.95  164.47
+
+# Now, with dplyr
+system.time(grpmean2 <- df %.%
+                          group_by(group) %.%
+                          summarize(
+                            grpmean = mean(variable)
+                          ))
+# user  system elapsed 
+# 4.13    0.05    4.17 
+
+# 40X faster!
+```
+
+## Databases
+
+To paraphrase [Hadley][dplyrdb], dplyr supports the three most popular open source databases (sqlite, mysql and postgresql), and google's bigquery.  If your data can fit in memory, there's no advantage (and several disadvantages) to putting them in a database.  But dplyr may be useful if your data is (1) already in a database (and you don't want to extract and work with static csv), or (2) does not fit in memory.  See the [database vignette][dplyrdb] to get started. 
+
+## Summary
+
+Code that's easier on the eyes using the chained/piped functionality.  Faster computations.  Easy database interaction.  What are you waiting for?
+
+[R]: http://cran.us.r-project.org
+[introdplyr]: http://www.r-bloggers.com/introducing-dplyr
+[chainchange]: https://github.com/hadley/dplyr/issues/209
+[introdplyr2]: http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+[magrittr]: https://github.com/smbache/magrittr
+[dplyrdb]: http://cran.rstudio.com/web/packages/dplyr/vignettes/databases.html
+[ddplydiam]: http://scicomp2014.edc.uri.edu/posts/2014-03-03-Smith.html
