@@ -50,9 +50,9 @@ dcut <- ddply(diamonds, .(cut, clarity, color), summarize,
 head(dcut, 10)
 
 # The chained dplyr version
-dcut2 <- diamonds %.% # start by specifying the data.frame
-  group_by(cut, clarity, color) %.%  # The specify the grouping variables
-  summarize(
+dcut2 <- diamonds %.%                # start by specifying the data.frame
+  group_by(cut, clarity, color) %.%  # then specify the grouping variables
+  summarize(                         # now set up the functions to calculate on each group
     meancarat = mean(carat, na.rm = TRUE), 
     ndiamonds = length(carat)
   )
