@@ -27,7 +27,7 @@ con <- dbConnect(SQLite(), dbname="nameHere.sqlite")
 
 It takes a considerable amount of time to load large CSV files to a database, so I have already added a few tables that we will look up by listing the tables in the connected database, then reading the fields found in the ww2012 table, which is all water quality records that were collected by Watershed Watch volunteers in 2012.
 
-```{r DbaseSetup}
+```{r DbaseSetup, eval=FALSE}
 #load the driver to SQLite database
 drv <- dbDriver("SQLite")
 #connect to NRS592 database example
