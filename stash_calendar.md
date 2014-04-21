@@ -46,11 +46,11 @@ title: Course Calendar
  
 ### Day 11, Monday, Apr 7, 2014
  - **Presenter:** Jeff Hollister
- - **Blog:** Reproducible Presentations with Slidify and RStudio
+ - **Blog:** [Reproducible Presentations with Slidify and RStudio](http://scicomp2014.edc.uri.edu/posts/2014-04-07-Hollister.html)
  
 ### Day 12, Monday, Apr 14, 2014
  - **Presenter:** Adam Smith
- - **Blog:** `dplyr` and other cool things
+ - **Blog:** [Introduction to `dplyr`](http://scicomp2014.edc.uri.edu/posts/2014-04-14-Smith.html)
  
 ### Day 13, Monday, Apr 21, 2014
  - **Presenter:** Michael Yanchuk
