@@ -4,7 +4,7 @@ title: Reproducible Presentations with Slidify and RStudio
 author: Jeff Hollister
 ---
 
-The goals for this post is to introduce the concept of using R Markdown to create reproducible presentations (aka, how to ditch Powerpoint).  I am going to show two different ways to do this one with an R package `slidify` and another with R Presentations in R Studio.  As we go through this, you should hopefully see a lot of overlap in what you have already seen with writing blog posts.  In other words, the tools are the same, just some different processing steps to get the final output.
+The goals for this post are to introduce the concept of using R Markdown to create reproducible presentations (aka, how to ditch Powerpoint).  I am going to show two different ways to do this one with an R package `slidify` and another with R Presentations in R Studio.  As we go through this, you should hopefully see a lot of overlap in what you have already seen with writing blog posts.  In other words, the tools are the same, just some different processing steps to get the final output.
 
 During today's class we will cover the basics of styling, and some basic workflows for creating presentations.  If there is time, I will give a presentation, created with `slidify`, on blogging and social media for scientists just so you can see one of these in action.
 

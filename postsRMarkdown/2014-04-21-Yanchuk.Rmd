@@ -1,0 +1,151 @@
+---
+layout: post
+title: Connecting to a database to manipulate data into a pivot table
+author: Michael Yanchuk
+---
+```{r setup1, include=FALSE, echo=FALSE, cache=FALSE}
+options(width=80)
+toLoad = c("RSQLite", "sqldf", "reshape2")
+sapply(toLoad, require, character.only = TRUE)
+```
+In this post, I’d like to provide examples of connecting to databases with a few handy tools to manipulate data as needed.  To start, I had to decide on the type of relational database I would set up.  MS Access is not provided with the student version of Microsoft Office, so I ruled that out.  My next goal was to explore open source database types.  I started with MySQL Community Edition, which provides a nice Add-in to MS Excel for easy table importing. 
+
+Connecting to a database with R proved to be difficult using RMySQL.  Because R needs to connect to the exact version and instance of the database, I tried RODBC as a work around.  This also produced errors in connecting to the database.  After reading about connecting to a database with R, I decided to switch gears and explore SQLite.  The SQLite download provides only a shell to insert commands, so I downloaded a SQLite browser with a few common tools in the interest of getting up and running (and connected).  To test database connection, I first created a simple database with two tables.  Installing RSQLite, I was able to easily connect and bring a table into RStudio as a dataframe.  To explain in further detail, I will back up a few steps to create a new database from RStudio, then add tables to work with in R.
+
+## Creating a database in SQLite
+
+The first step is to install the 'RSQLdf' package.  Installing this package is used for querying the database using SQL statements, and it will automatically install the 'RSQLite' package (for connecting to a database) along with the 'DBI' package (for Database Interface).  
+
+To create a new database, RSQLite’s 'dbconnect()' function creates a connection to a database that is created after running the line of script; just give it a name.
+
+```{r dbConnect, eval=FALSE}
+# create new database
+con <- dbConnect(SQLite(), dbname="nameHere.sqlite")
+```
+
+## Listing and reading tables from the database
+
+It takes a considerable amount of time to load large CSV files to a database, so I have already added a few tables that we will look up by listing the tables in the connected database, then reading the fields found in the ww2012 table, which is all water quality records that were collected by Watershed Watch volunteers in 2012.
+
+```{r DbaseSetup, eval=FALSE}
+#load the driver to SQLite database
+drv <- dbDriver("SQLite")
+#connect to NRS592 database example
+con <- dbConnect(drv, "C:/Users/Owner/Desktop/EPA_WW/WORKING_DOCS/SQL/WW_NRS592")
+
+#list tables that are found in NRS592 example database
+dbListTables(con)
+
+#list fields in ww2012 table
+dbListFields(con, "ww2012")
+```
+
+## Adding a CSV file to the database
+
+To demonstrate adding tables to a database, I’ve chosen a smaller table to import.  I exported the attributes table from the Hydrologic Unit Codes (HUC12) shapefile from RIGIS.  This table will relate to the HUC name that is provided in the StationLocation table, supplying additional information about the HUC.
+
+To import a CSV table to the database, I want to first read the table into R.  Next, I will import the dataframe into the database.  We will then read the file to see that it was imported into the database.  If you want to import tables straight from MS Excel instead of CSV files, the 'XLConnect' package will allow you to read and import .xlsx files.  For this example, I have only provided the script to work with CSV files below.
+
+```{r readCSV, eval=FALSE}
+# read CSV file to R
+HUC_info <- read.csv("C:\Users\Owner\Desktop\EPA_WW\WORKING_DOCS\SQL\HUC.csv")
+# Import data frames into database
+dbWriteTable(conn = con, name = "HUC_info", value = HUC_info, row.names = FALSE)
+```
+
+```{r readTable, eval=FALSE}
+# list tables in the database (to see recently added HUC)
+dbListTables(con)
+# List the columns in the HUC_info table
+dbListFields(con, "HUC_info")
+# read table that was just imported into Database
+dbReadTable(con, "HUC_info")
+```
+
+## Removing a table from the database
+
+Let’s say I have an outdated table that I no longer need in the database.  The table can be removed with the dbRemoveTable () function.  When we listed each of the tables in the database earlier, you may have noticed a table called ww2008_old.  ww2008 is the updated table with records formatted correctly to match the format of the other yearly records, so we can remove the ww2008_old table with the following script.
+
+```{r removeTable, eval=FALSE}
+# Remove ww2008_old table
+dbRemoveTable (con, "ww2008_old")
+```
+
+## Data Manipulation:  Selecting fields and subsetting records
+
+The next thing I would like to demonstrate involves manipulating the ww2012 table to select and subset records of interest.  For example, there are 18 fields within the ww2012 table.  I would like to select only the following fields:  StationName, SampleDate, Parameter, Measurement, and UnitCode.  This produces a dataframe in R that holds 23,000+ records.  Additionally, I’d like to subset the Parameters for Secchi Depth and Chlorophyll a, disregarding the 15 other water quality parameters.
+
+```{r dbGetQuery, echo=TRUE}
+#read the data from SQLite to a dataframe
+wq2012 = dbGetQuery(con, "Select StationName, SampleDate, Parameter, Measurement from ww2012")
+
+#subset wq2012 data frame for Parameters (secchi depth and chlorophyll a)
+wq2012a = subset(wq2012, Parameter == "Secchi Depth" | Parameter == "Chlorophyll a (Trilogy)")
+```
+
+The new dataframe, wq2012a, holds 2878 monitoring records (only secchi depth and chlorophyll).  Notice that the chlorophyll parameter is listed as “Chlorophyll a (trilogy)”.  In previous years, other technologies were used to monitor chlorophyll, which is listed as “Chlorophyll a (digital)” and “Chlorophyll a (analog)”.  If we were querying all water quality tables, we might want to consider all variations of chlorophyll.  To do this, the grep function allows you to match strings with a partial selection like “Chlorophyll”. 
+
+There are a few steps that need to be taken in order to run reshaping functions without error.  Good practice in database management includes making sure each table has a unique identifier if there is ever a need to reference each record individually.  So we e will create a field with a unique id for each record in the HUC_info table.
+
+```{r UniqueID}
+#create unique ID column in HUC_info table
+id <- rownames(wq2012a)
+wq2012a <- cbind(id=id, wq2012a)
+```
+Next, values in the measurement field need to be converted from character to numeric value in order for values to be of use.
+
+```{r numericValue}
+# Make Measurement numeric
+wq2012a$Measurement = as.numeric(wq2012a$Measurement)
+```
+
+Next, we need alter the entries within the “Parameter” field because they have spaces and will cause issues when the reshaping functions moves “Secchi Depth” and “Chlorophyll a (Trilogy)” to become field names.  To do this, we can tell R to create a new field named “Parm” that has only the first six characters from the Parameter string, which will give us either “Secchi” or “Chloro”.  The following line demonstrates:
+
+```{r substr}
+# Change Parameter entries to avoid spaces
+wq2012a$parm = substr(wq2012a[, 4], 1, 6)
+```
+
+## Reshaping table structure
+
+Now we have a long format data table that I’d like to manipulate into a wide format table, where “Secchi Depth” and “Chlorophyll a” are in two columns instead of one.  To do this we can use the 'ReShape2' package.  We’d like to list each secchi and chlorophyll measurement by the corresponding date.  What makes this tricky is that some dates have one record for each, and other dates have multiple measurements (multiple waterbodies monitored on the same day).  The 'dcast' function should reorganize the table as needed.  
+
+```{r attempt1}
+# First attempt, producing warning in dcast function
+pivot2012 = dcast(wq2012a, SampleDate + StationName ~ parm, value.var = "Measurement")
+summary(pivot2012)
+```
+
+An error occurs stating “Aggregate function missing:  defaulting to length”.
+The summary function illustrates why the error has occurred.  “Max” = 2…  R wants something to be done to the duplicate values so that it can report a value as one entry (ie. sum, mean, etc).  There should only be one measurement per day per monitoring station, so this must be an entry error.  From the looks of it, volunteers may have duplicated their chlorophyll record since station name WW87 shows four instances of two entries on the same date.
+
+```{r pivot, echo=TRUE}
+# Find the duplicates
+subset(pivot2012, Chloro > 1)
+```
+
+After going back to look at what results were entered, it was found that each instance of two measurements being recorded on the same date were indeed duplicates with the same value in the measurement field.  These entries should be corrected in the database, however a quick fix to satisfy R’s aggregate error would be to tell R to aggregate data with a mean.  This will end up producing the same value because they are duplicates (average of 3.2 and 3.2 is 3.2).  
+
+```{r pivotA, echo=TRUE}
+#Next attempt, assume duplicate records so mean is fine
+pivot2012a = dcast(wq2012a, SampleDate + StationName ~ parm, mean, value.var = "Measurement")
+```
+
+## Plotting Chlorophyll vs. Secchi Depth
+
+Pivot2012a correctly reports values for measurements in the “Secchi” and “Chloro” fields.  From here, we can plot the results to see the relationship between chlorophyll and secchi depth.  We expect to find that higher values from secchi measurements (deeper) indicate clear water quality, where chlorophyll measurements should be lower. Likewise, the opposite should be true for lower secchi values (shallow measurements = poor water clarity).  
+
+```{r plot, echo=TRUE}
+# Plot chlorophyll vs secchi: Subset to eliminate outlier chlorophyll value
+with(subset(pivot2012a, Chloro < 200), plot(Secchi, Chloro))
+```
+
+Because chlorophyll measurements cover a large range of values, we can plot chlorophyll with a log scale using intervals corresponding to orders of magnitude to view the relationship in another way.  The example below demonstrates:  
+
+```{r logPlot, echo=TRUE}
+# Plot chlorophyll on log scale
+with(subset(pivot2012a, Chloro < 200), plot(Secchi, log(Chloro)))
+```
+
+There are many more possibilities for analyzing the Watershed Watch database, not only for chlorophyll and secchi depth, but also for the 15 other water quality parameters measured throughout the last 26 years.  Hopefully this simple example provides a few useful tools to use with R Studio related to other database projects. 
+
