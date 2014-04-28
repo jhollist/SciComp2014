@@ -86,7 +86,7 @@ zipsum <- mutate(zipsum, region = zip)
 choroplethr(zipsum, "zip", title = "Container destination by zip code")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/zip.png) 
+![plot of chunk unnamed-chunk-5](/figure/zip.png) 
 
 
 ### Aggregate to and plot at the state level
@@ -103,5 +103,5 @@ statesum <- mutate(statesum, region = state)
 choroplethr(statesum, "state", title = "Container destination by state")
 ```
 
-![plot of chunk unnamed-chunk-6](figure/state.png) 
+![plot of chunk unnamed-chunk-6](/figure/state.png) 
 
