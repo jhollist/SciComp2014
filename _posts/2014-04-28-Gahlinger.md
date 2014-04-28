@@ -1,13 +1,13 @@
---
+---
 layout: post
 title: Using R to extract ZIP codes from Excel text field
 Author: Greg Gahlinger
 ---
 
-# Extracting Shipping Container Destination ZIP Code Data
+## Extracting Shipping Container Destination ZIP Code Data
 Object is to use an available Excel file (.csv) with imported shipping container data for the Port of New York and extract ZIP code destination as a text field.
 
-![Container](http://upload.wikimedia.org/wikipedia/commons/7/7a/Line3174_-_Shipping_Containers_at_the_terminal_at_Port_Elizabeth%2C_New_Jersey_-_NOAA.jpg)
+![Container](/figure/containers.png)
 
 ### Load required packages
 
@@ -86,7 +86,7 @@ zipsum <- mutate(zipsum, region = zip)
 choroplethr(zipsum, "zip", title = "Container destination by zip code")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+![plot of chunk unnamed-chunk-5](figure/zip.png) 
 
 
 ### Aggregate to and plot at the state level
@@ -103,5 +103,5 @@ statesum <- mutate(statesum, region = state)
 choroplethr(statesum, "state", title = "Container destination by state")
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
+![plot of chunk unnamed-chunk-6](figure/state.png) 
 
