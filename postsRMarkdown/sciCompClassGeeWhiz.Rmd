@@ -1,14 +1,14 @@
 ---
-title: 
-author: 
-date: 
-output: pdf_document
+title: "null"
+author: "null"
+date: "null"
+output: word_document
 ---
 
-# In Partnership With Unvirsety of Rhode Island, Atlantic Ecology Division Researcher Co-Hosts Software Carpentry Bootcamp and Semester Long Course on Scientific Computing with R 
+# In Partnership With University of Rhode Island, Atlantic Ecology Division Researcher Co-Hosts Software Carpentry Bootcamp and Semester Long Course on Scientific Computing with R 
 
 ## Status: Narragansett, RI, May 16, 2014
 
-In January 2014, Atlantic Ecology Division Research Jeff Hollister co-hosted, along with University of Rhode Island's Costal Institute, a Software Carpentry Bootcamp (http://software-carpentry.org)  
+In January 2014, Atlantic Ecology Division Research Jeff Hollister co-hosted, along with University of Rhode Island's (URI) Coastal Institute, a two-day Software Carpentry Bootcamp (http://software-carpentry.org).  We had nearly 40 participants (about 10 from AED) that learned ways to use computers (e.g. shell, version control, databases,  and R) to do their jobs better and faster. To continue the learning started in the bootcamp Peter August (URI), Adam Smith (URI), and Jeff Hollister led a follow on course at URI.  In this about 10 participants of the bootcamp took the course where they continued to work on version control with git and GitHub, contributed to course discussions on using R for various research tasks, and helped each other debug code they had written.  Feedback on the course was overwhelmingly positive and the one major suggestion was for more hands on work!  The students feel that they now can apply much of what was presented in the bootcamp and course in their own work.  Discussion are currently underway about repeating both the bootcamp and the class.    
 
 **Contact:** Jeff Hollister (401) 782 9655
