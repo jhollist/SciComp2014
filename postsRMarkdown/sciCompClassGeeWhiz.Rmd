@@ -1,0 +1,14 @@
+---
+title: 
+author: 
+date: 
+output: pdf_document
+---
+
+# In Partnership With Unvirsety of Rhode Island, Atlantic Ecology Division Researcher Co-Hosts Software Carpentry Bootcamp and Semester Long Course on Scientific Computing with R 
+
+## Status: Narragansett, RI, May 16, 2014
+
+In January 2014, Atlantic Ecology Division Research Jeff Hollister co-hosted, along with University of Rhode Island's Costal Institute, a Software Carpentry Bootcamp (http://software-carpentry.org)  
+
+**Contact:** Jeff Hollister (401) 782 9655
