@@ -20,6 +20,7 @@ title: Resources
 - [Jeff Leek's Thoughts on R Package Development](https://github.com/jtleek/rpackages)
 
 ### git & GitHub
+- [Git and GitHub videos for beginners](http://www.dataschool.io/git-and-github-videos-for-beginners)
 - [Pro Git book online, by Scott Chacon](http://git-scm.com/book)
 - [Git Immersion](http://gitimmersion.com/)
 - [GitHub Training (video tutorials)](http://training.github.com/resources/videos/)
