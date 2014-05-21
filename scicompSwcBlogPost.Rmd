@@ -1,0 +1,9 @@
+---
+title: "Keeping the Bootcamp Fun Alive!"
+author: "Jeff Hollister and Adam Smith"
+date: "Wednesday, May 21, 2014"
+output: pdf_document
+---
+In the later part of 2013, I started the process of co-hosting a Bootcamp with [Peter August](), [Judith Swift]() both from the University of Rhode Island (URI).  During our discussions it became quite clear that as fantastic as the bootcamps are, it would be even better if we could extend the learning.  We tossed around several ideas but eventually decided we would try a special topics course at URI.  Thus, [Scientific Computing and Programming for Coastal Resource Managment](http://scicomp2014.edc.uri.edu/) was born.  We opened the course up to any of the bootcamp participants who had an interest and official enrollment in the course was not required.  In the end we had about 10 regulars attend the classes and a few students who enrolled for credit.    
+
+The intent for this course was to have it be very much directed by the students as we wanted to them to try and apply what they learned in the bootcamp to computing problems of their own.   

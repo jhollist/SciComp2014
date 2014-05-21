@@ -3,6 +3,6 @@ layout: blog
 root: ../../..
 author: Jeff Hollister
 title: "Keeping the Bootcamp Fun Alive!"
-date: 2014-03-03
+date: May 21, 2014
 ---
 
