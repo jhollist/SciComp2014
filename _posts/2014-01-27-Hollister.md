@@ -119,7 +119,7 @@ Lists can be done many ways in markdown.  For this tutorial we will focus on uno
 - the following 
 - code
 ```
-Notice the space after the `-`.  With most markdown interpertters, you can nest lists.  These are not currently getting parsed correctly on the course website.  Not sure why...
+Notice the space after the `-`.  With most markdown interpreters, you can nest lists.  These are not currently getting parsed correctly on the course website.  Not sure why...
 
 To create an ordered list, simple use numbers.  So to produce:
 
