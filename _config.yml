@@ -1,8 +1,6 @@
 markdown: rdiscount
 pygments: true
 permalink: /posts/:year-:month-:day-:title.html
-rdiscount:
-  extensions: [smart]
 name: NRS592 URISciComp
 url: http://scicomp2014.edc.uri.edu
 description: "NRS 592: Scientific Computing for Coastal Resources Management"
